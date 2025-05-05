@@ -70,7 +70,7 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with Picture Element -->
     <section class="hero-section">
         <div class="hero-overlay"></div>
         <div class="container h-100">
@@ -114,17 +114,25 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="about-image-container">
-                        <img src="assets/images/hotel-lobby.jpg" alt="Lobby Andrea Hotel" 
-                             class="img-fluid rounded shadow" 
-                             width="600" height="400" 
-                             loading="lazy">
+                        <picture>
+                            <!-- WebP format for modern browsers -->
+                            <source srcset="assets/images/hotel-lobby.webp" type="image/webp">
+                            <!-- Fallback for older browsers -->
+                            <source srcset="assets/images/hotel-lobby.jpg" type="image/jpeg">
+                            <!-- Default image -->
+                            <img src="assets/images/hotel-lobby.jpg" 
+                                 alt="Lobby Andrea Hotel" 
+                                 class="img-fluid rounded shadow" 
+                                 width="600" height="400" 
+                                 loading="lazy">
+                        </picture>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Room Preview Section -->
+    <!-- Room Preview Section with Responsive Images -->
     <section class="room-section py-5 bg-light">
         <div class="container">
             <div class="text-center mb-5">
@@ -135,11 +143,16 @@
             <div class="row g-4">
                 <div class="col-md-4">
                     <div class="card room-card h-100 border-0 shadow-sm">
-                        <img src="assets/images/kamar-standar.jpg" 
-                             class="card-img-top" 
-                             alt="Kamar Standar Andrea Hotel" 
-                             width="400" height="300" 
-                             loading="lazy">
+                        <picture>
+                            <source media="(min-width: 992px)" srcset="assets/images/kamar-standar-large.webp">
+                            <source media="(min-width: 576px)" srcset="assets/images/kamar-standar-medium.webp">
+                            <source srcset="assets/images/kamar-standar-small.webp" type="image/webp">
+                            <img src="assets/images/kamar-standar.jpg" 
+                                 class="card-img-top" 
+                                 alt="Kamar Standar Andrea Hotel" 
+                                 width="400" height="300" 
+                                 loading="lazy">
+                        </picture>
                         <div class="card-body">
                             <h3 class="card-title">Kamar Standar</h3>
                             <ul class="room-features list-unstyled">
@@ -163,11 +176,16 @@
                 
                 <div class="col-md-4">
                     <div class="card room-card h-100 border-0 shadow-sm">
-                        <img src="assets/images/kamar-deluxe.jpg" 
-                             class="card-img-top" 
-                             alt="Kamar Deluxe Andrea Hotel" 
-                             width="400" height="300" 
-                             loading="lazy">
+                        <picture>
+                            <source media="(min-width: 992px)" srcset="assets/images/kamar-deluxe-large.webp">
+                            <source media="(min-width: 576px)" srcset="assets/images/kamar-deluxe-medium.webp">
+                            <source srcset="assets/images/kamar-deluxe-small.webp" type="image/webp">
+                            <img src="assets/images/kamar-deluxe.jpg" 
+                                 class="card-img-top" 
+                                 alt="Kamar Deluxe Andrea Hotel" 
+                                 width="400" height="300" 
+                                 loading="lazy">
+                        </picture>
                         <div class="card-body">
                             <h3 class="card-title">Kamar Deluxe</h3>
                             <ul class="room-features list-unstyled">
@@ -191,11 +209,16 @@
                 
                 <div class="col-md-4">
                     <div class="card room-card h-100 border-0 shadow-sm">
-                        <img src="assets/images/kamar-suite.jpg" 
-                             class="card-img-top" 
-                             alt="Suite Andrea Hotel" 
-                             width="400" height="300" 
-                             loading="lazy">
+                        <picture>
+                            <source media="(min-width: 992px)" srcset="assets/images/kamar-suite-large.webp">
+                            <source media="(min-width: 576px)" srcset="assets/images/kamar-suite-medium.webp">
+                            <source srcset="assets/images/kamar-suite-small.webp" type="image/webp">
+                            <img src="assets/images/kamar-suite.jpg" 
+                                 class="card-img-top" 
+                                 alt="Suite Andrea Hotel" 
+                                 width="400" height="300" 
+                                 loading="lazy">
+                        </picture>
                         <div class="card-body">
                             <h3 class="card-title">Suite</h3>
                             <ul class="room-features list-unstyled">
@@ -298,7 +321,7 @@
         </div>
     </section>
 
-    <!-- Testimonial Section -->
+    <!-- Testimonial Section with Optimized Images -->
     <section class="testimonial-section py-5 bg-light">
         <div class="container">
             <div class="text-center mb-5">
@@ -321,11 +344,14 @@
                                     </div>
                                     <p class="testimonial-text mb-4">"Pelayanan sangat memuaskan! Kamar bersih dan nyaman, lokasi strategis dekat dengan pusat perbelanjaan. Pasti akan kembali lagi."</p>
                                     <div class="testimonial-author">
-                                        <img src="assets/images/testimonial-1.jpg" 
-                                             alt="Budi Santoso - Business Traveler" 
-                                             class="rounded-circle mb-2" 
-                                             width="60" height="60"
-                                             loading="lazy">
+                                        <picture>
+                                            <source srcset="assets/images/testimonial-1.webp" type="image/webp">
+                                            <img src="assets/images/testimonial-1.jpg" 
+                                                 alt="Budi Santoso - Business Traveler" 
+                                                 class="rounded-circle mb-2" 
+                                                 width="60" height="60"
+                                                 loading="lazy">
+                                        </picture>
                                         <h5 class="mb-1">Budi Santoso</h5>
                                         <small class="text-muted">Business Traveler</small>
                                     </div>
@@ -342,11 +368,14 @@
                                     </div>
                                     <p class="testimonial-text mb-4">"Suasana hotel sangat nyaman untuk keluarga. Anak-anak senang dengan kolam renangnya. Sarapannya juga lengkap dan enak."</p>
                                     <div class="testimonial-author">
-                                        <img src="assets/images/testimonial-2.jpg" 
-                                             alt="Dewi Lestari - Family Vacation" 
-                                             class="rounded-circle mb-2" 
-                                             width="60" height="60"
-                                             loading="lazy">
+                                        <picture>
+                                            <source srcset="assets/images/testimonial-2.webp" type="image/webp">
+                                            <img src="assets/images/testimonial-2.jpg" 
+                                                 alt="Dewi Lestari - Family Vacation" 
+                                                 class="rounded-circle mb-2" 
+                                                 width="60" height="60"
+                                                 loading="lazy">
+                                        </picture>
                                         <h5 class="mb-1">Dewi Lestari</h5>
                                         <small class="text-muted">Family Vacation</small>
                                     </div>
@@ -367,8 +396,18 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section py-5 text-white" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('assets/images/cta-bg.jpg') center/cover no-repeat;">
+    <!-- CTA Section with Background Picture Element -->
+    <section class="cta-section py-5 text-white">
+        <div class="cta-overlay"></div>
+        <picture class="cta-background">
+            <source media="(min-width: 992px)" srcset="assets/images/cta-bg-large.webp">
+            <source media="(min-width: 576px)" srcset="assets/images/cta-bg-medium.webp">
+            <source srcset="assets/images/cta-bg-small.webp" type="image/webp">
+            <img src="assets/images/cta-bg.jpg" 
+                 alt="Andrea Hotel Call to Action Background" 
+                 loading="lazy"
+                 aria-hidden="true">
+        </picture>
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-8 mb-4 mb-lg-0">
