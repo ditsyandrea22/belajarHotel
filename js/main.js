@@ -57,3 +57,103 @@ if (contactForm) {
         this.reset();
     });
 }
+
+// Payment System
+document.addEventListener('DOMContentLoaded', function() {
+    // Hitung total pembayaran
+    const nightsInput = document.getElementById('nights');
+    const totalPayment = document.getElementById('totalPayment');
+    
+    function calculateTotal() {
+        const pricePerNight = 350000;
+        const nights = parseInt(nightsInput.value) || 1;
+        const total = pricePerNight * nights;
+        totalPayment.textContent = 'Rp ' + total.toLocaleString('id-ID');
+    }
+    
+    nightsInput.addEventListener('change', calculateTotal);
+    
+    // Toggle payment method details
+    const paymentMethods = document.querySelectorAll('input[name="paymentMethod"]');
+    const bankDetails = document.querySelector('.bank-details');
+    const ewalletDetails = document.querySelector('.ewallet-details');
+    const bankInstruction = document.getElementById('bankInstruction');
+    const ewalletInstruction = document.getElementById('ewalletInstruction');
+    
+    const bankAccounts = {
+        'bca': 'BCA 123 456 7890 a/n Hotel Kami',
+        'mandiri': 'Mandiri 987 654 3210 a/n Hotel Kami',
+        'bni': 'BNI 567 890 1234 a/n Hotel Kami',
+        'bri': 'BRI 345 678 9012 a/n Hotel Kami'
+    };
+    
+    const ewalletMethods = {
+        'gopay': 'Gunakan GoPay untuk membayar dengan scan QR code atau transfer ke nomor tujuan',
+        'ovo': 'Gunakan OVO untuk membayar dengan scan QR code atau transfer ke nomor tujuan',
+        'dana': 'Gunakan DANA untuk membayar dengan scan QR code atau transfer ke nomor tujuan',
+        'shopeepay': 'Gunakan ShopeePay untuk membayar dengan scan QR code',
+        'linkaja': 'Gunakan LinkAja untuk membayar dengan scan QR code'
+    };
+    
+    paymentMethods.forEach(method => {
+        method.addEventListener('change', function() {
+            if (this.value === 'bank') {
+                bankDetails.classList.remove('d-none');
+                ewalletDetails.classList.add('d-none');
+            } else {
+                bankDetails.classList.add('d-none');
+                ewalletDetails.classList.remove('d-none');
+            }
+        });
+    });
+    
+    // Update bank instructions
+    document.getElementById('bankSelect').addEventListener('change', function() {
+        bankInstruction.textContent = 'Silakan transfer ke ' + bankAccounts[this.value];
+    });
+    
+    // Update e-wallet instructions
+    document.getElementById('ewalletSelect').addEventListener('change', function() {
+        ewalletInstruction.textContent = ewalletMethods[this.value];
+    });
+    
+    // Form submission
+    document.getElementById('paymentForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+        const nights = nightsInput.value;
+        const total = 350000 * nights;
+        
+        let paymentDetail = '';
+        if (paymentMethod === 'bank') {
+            const bank = document.getElementById('bankSelect').value;
+            paymentDetail = `Transfer Bank ${bank.toUpperCase()} - ${bankAccounts[bank]}`;
+        } else {
+            const ewallet = document.getElementById('ewalletSelect').value;
+            paymentDetail = `E-Wallet ${ewallet.charAt(0).toUpperCase() + ewallet.slice(1)}`;
+        }
+        
+        // Simpan data pembayaran
+        const paymentData = {
+            roomType: 'Standar',
+            nights: nights,
+            total: total,
+            paymentMethod: paymentMethod,
+            paymentDetail: paymentDetail,
+            timestamp: new Date().toISOString()
+        };
+        
+        // Simpan ke localStorage (simulasi)
+        localStorage.setItem('lastPayment', JSON.stringify(paymentData));
+        
+        // Tampilkan konfirmasi
+        alert(`Pembayaran berhasil diproses!\n\nDetail:\nKamar: Standar\n${nights} Malam\nTotal: Rp ${total.toLocaleString('id-ID')}\nMetode: ${paymentDetail}`);
+        
+        // Redirect ke halaman konfirmasi
+        window.location.href = 'konfirmasi.html';
+    });
+    
+    // Inisialisasi
+    calculateTotal();
+});
