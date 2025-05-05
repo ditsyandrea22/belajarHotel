@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hotel Kami - Beranda</title>
+    <title>Hotel Kami - Pilih Kamar</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
@@ -109,123 +109,6 @@
             cursor: pointer;
         }
         
-        /* Login Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.5);
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .login-form {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: var(--shadow);
-            max-width: 400px;
-            width: 90%;
-        }
-        
-        .login-form h2 {
-            text-align: center;
-            margin-bottom: 1.5rem;
-            color: var(--primary-color);
-        }
-        
-        .form-group {
-            margin-bottom: 1.2rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--dark-color);
-            font-weight: 500;
-        }
-        
-        .form-group input {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1rem;
-        }
-        
-        .login-btn {
-            width: 100%;
-            padding: 0.8rem;
-            background-color: var(--secondary-color);
-            color: var(--white);
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 500;
-            transition: background-color 0.3s;
-        }
-        
-        .login-btn:hover {
-            background-color: #3e8e41;
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/hotel-hero.jpg');
-            background-size: cover;
-            background-position: center;
-            color: var(--white);
-            text-align: center;
-            padding: 5rem 1rem;
-            margin-bottom: 3rem;
-        }
-        
-        .hero h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 2rem;
-        }
-        
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--accent-color);
-            color: var(--white);
-            padding: 0.75rem 1.5rem;
-            text-decoration: none;
-            border-radius: 50px;
-            transition: all 0.3s;
-            margin-right: 1rem;
-            font-weight: 500;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .btn:hover {
-            background: #2980b9;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
-        
-        .btn-secondary {
-            background: var(--secondary-color);
-        }
-        
-        .btn-secondary:hover {
-            background: #3d8b40;
-        }
-        
         /* Room Section */
         .room-section {
             padding: 3rem 0;
@@ -243,6 +126,7 @@
             overflow: hidden;
             transition: transform 0.3s, box-shadow 0.3s;
             height: 100%;
+            margin-bottom: 2rem;
         }
         
         .room-card:hover {
@@ -251,17 +135,26 @@
         }
         
         .card-img-top {
-            height: 200px;
+            height: 250px;
             object-fit: cover;
+            width: 100%;
         }
         
         .card-title {
             color: var(--primary-color);
             font-weight: 600;
+            margin-top: 1rem;
+        }
+        
+        .room-features {
+            list-style: none;
+            padding: 0;
         }
         
         .room-features li {
             margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
         }
         
         .room-features i {
@@ -271,14 +164,45 @@
             margin-right: 8px;
         }
         
+        .room-price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 1rem 0;
+        }
+        
         .btn-primary {
             background-color: var(--accent-color);
             border: none;
-            margin-top: 1rem;
+            width: 100%;
+            padding: 0.75rem;
+            font-weight: 500;
         }
         
         .btn-primary:hover {
             background-color: #2980b9;
+        }
+        
+        .btn-success {
+            background-color: var(--secondary-color);
+        }
+        
+        /* Reservation Form */
+        .reservation-form {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            margin-top: 3rem;
+        }
+        
+        .form-label {
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+        
+        .form-control {
+            margin-bottom: 1rem;
         }
         
         /* Footer */
@@ -312,16 +236,8 @@
                 display: block;
             }
             
-            .hero h2 {
-                font-size: 2rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-            
-            .room-card {
-                margin-bottom: 2rem;
+            .card-img-top {
+                height: 200px;
             }
         }
     </style>
@@ -339,8 +255,8 @@
             </button>
             
             <ul class="nav-links" id="navLinks">
-                <li><a href="index.html" class="active"><i class="fas fa-home"></i> Beranda</a></li>
-                <li><a href="pilihkamar.html"><i class="fas fa-bed"></i> Pilih Kamar</a></li>
+                <li><a href="index.html"><i class="fas fa-home"></i> Beranda</a></li>
+                <li><a href="pilihkamar.html" class="active"><i class="fas fa-bed"></i> Pilih Kamar</a></li>
                 <li><a href="fasilitas.html"><i class="fas fa-swimming-pool"></i> Fasilitas</a></li>
                 <li><a href="kontak.html"><i class="fas fa-envelope"></i> Kontak</a></li>
                 <li><a href="#" id="loginBtn"><i class="fas fa-sign-in-alt"></i> Login</a></li>
@@ -348,93 +264,220 @@
         </nav>
     </header>
     
-    <div class="hero">
-        <h2>Selamat Datang di Hotel Kami</h2>
-        <p>Pengalaman menginap yang tak terlupakan dengan pelayanan terbaik dan fasilitas lengkap</p>
-        <a href="pilihkamar.html" class="btn"><i class="fas fa-calendar-alt"></i> Pesan Sekarang</a>
-    </div>
-    
-    <!-- Room Section -->
     <section class="room-section">
         <div class="container">
-            <h2 class="section-title">Kamar Kami</h2>
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="card room-card h-100">
-                        <img src="img/kamar-standar.jpg" class="card-img-top" alt="Kamar Standar dengan tempat tidur queen-size dan meja kerja">
-                        <div class="card-body">
-                            <h3 class="card-title">Kamar Standar</h3>
-                            <ul class="room-features list-unstyled">
-                                <li><i class="fas fa-wifi"></i> Wi-Fi Gratis</li>
-                                <li><i class="fas fa-tv"></i> TV 32"</li>
-                                <li><i class="fas fa-bed"></i> Queen Size Bed</li>
-                                <li><i class="fas fa-bath"></i> Kamar Mandi Pribadi</li>
-                            </ul>
-                            <button class="btn btn-primary" onclick="pilihKamar('standar')">Pilih Kamar</button>
-                        </div>
+            <h2 class="section-title">Pilihan Kamar</h2>
+            <div class="row" id="room-list">
+                <!-- Room cards will be loaded here by JavaScript -->
+            </div>
+            
+            <div class="reservation-form" id="reservation-form">
+                <h3 class="text-center mb-4">Form Reservasi</h3>
+                <form id="bookingForm">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Nama Lengkap</label>
+                        <input type="text" class="form-control" id="name" required>
                     </div>
-                </div>
-                
-                <div class="col-md-4 mb-4">
-                    <div class="card room-card h-100">
-                        <img src="img/kamar-deluxe.jpg" class="card-img-top" alt="Kamar Deluxe dengan tempat tidur king-size dan pemandangan kota">
-                        <div class="card-body">
-                            <h3 class="card-title">Kamar Deluxe</h3>
-                            <ul class="room-features list-unstyled">
-                                <li><i class="fas fa-wifi"></i> Wi-Fi Gratis</li>
-                                <li><i class="fas fa-tv"></i> TV 42"</li>
-                                <li><i class="fas fa-bed"></i> King Size Bed</li>
-                                <li><i class="fas fa-bath"></i> Kamar Mandi dengan Bathtub</li>
-                                <li><i class="fas fa-coffee"></i> Minibar</li>
-                            </ul>
-                            <button class="btn btn-primary" onclick="pilihKamar('deluxe')">Pilih Kamar</button>
-                        </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" required>
                     </div>
-                </div>
-                
-                <div class="col-md-4 mb-4">
-                    <div class="card room-card h-100">
-                        <img src="img/kamar-suite.jpg" class="card-img-top" alt="Kamar Suite dengan ruang tamu terpisah dan balkon pribadi">
-                        <div class="card-body">
-                            <h3 class="card-title">Kamar Suite</h3>
-                            <ul class="room-features list-unstyled">
-                                <li><i class="fas fa-wifi"></i> Wi-Fi Gratis</li>
-                                <li><i class="fas fa-tv"></i> TV 55"</li>
-                                <li><i class="fas fa-bed"></i> King Size Bed</li>
-                                <li><i class="fas fa-couch"></i> Ruang Tamu Terpisah</li>
-                                <li><i class="fas fa-umbrella-beach"></i> Balkon Pribadi</li>
-                            </ul>
-                            <button class="btn btn-primary" onclick="pilihKamar('suite')">Pilih Kamar</button>
-                        </div>
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Nomor Telepon</label>
+                        <input type="tel" class="form-control" id="phone" required>
                     </div>
-                </div>
+                    <div class="mb-3">
+                        <label for="room" class="form-label">Pilih Kamar</label>
+                        <select class="form-select" id="room" required>
+                            <option value="">Pilih Kamar</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="checkin" class="form-label">Tanggal Check-in</label>
+                        <input type="date" class="form-control" id="checkin" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="checkout" class="form-label">Tanggal Check-out</label>
+                        <input type="date" class="form-control" id="checkout" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="guests" class="form-label">Jumlah Tamu</label>
+                        <input type="number" class="form-control" id="guests" min="1" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Pesan Sekarang</button>
+                </form>
             </div>
         </div>
     </section>
-    
-    <!-- Modal Login -->
-    <div id="loginModal" class="modal">
-        <div class="login-form">
-            <h2>Login</h2>
-            <form id="loginForm">
-                <div class="form-group">
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" name="username" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
-                <button type="submit" class="login-btn">Login</button>
-            </form>
-        </div>
-    </div>
 
     <footer>
         <p>&copy; 2023 Hotel Kami. Semua hak dilindungi.</p>
     </footer>
 
     <script>
+        // Data kamar
+        const rooms = [
+            { 
+                id: 1, 
+                name: "Kamar Standar", 
+                price: 350000, 
+                size: "20m²", 
+                capacity: 2, 
+                breakfast: false,
+                features: [
+                    "Wi-Fi Gratis",
+                    "TV 32\"",
+                    "Tempat tidur queen size",
+                    "Kamar mandi pribadi",
+                    "AC"
+                ],
+                image: "img/kamar-standar.jpg"
+            },
+            { 
+                id: 2, 
+                name: "Kamar Deluxe", 
+                price: 550000, 
+                size: "30m²", 
+                capacity: 2, 
+                breakfast: true,
+                features: [
+                    "Wi-Fi Gratis",
+                    "TV 42\"",
+                    "Tempat tidur king size",
+                    "Kamar mandi dengan bathtub",
+                    "Minibar",
+                    "Sarapan gratis"
+                ],
+                image: "img/kamar-deluxe.jpg"
+            },
+            { 
+                id: 3, 
+                name: "Suite", 
+                price: 1200000, 
+                size: "50m²", 
+                capacity: 4, 
+                breakfast: true,
+                features: [
+                    "Wi-Fi Gratis",
+                    "TV 55\"",
+                    "Tempat tidur king size",
+                    "Ruang tamu terpisah",
+                    "Balkon pribadi",
+                    "Minibar lengkap",
+                    "Sarapan gratis"
+                ],
+                image: "img/kamar-suite.jpg"
+            }
+        ];
+
+        // Fungsi untuk menampilkan kamar
+        function loadRooms() {
+            const roomList = document.getElementById('room-list');
+            const roomSelect = document.getElementById('room');
+            
+            roomList.innerHTML = '';
+            roomSelect.innerHTML = '<option value="">Pilih Kamar</option>';
+
+            rooms.forEach(room => {
+                // Tampilkan kartu kamar
+                const roomElement = document.createElement('div');
+                roomElement.className = 'col-md-4';
+                roomElement.innerHTML = `
+                    <div class="card room-card">
+                        <img src="${room.image}" class="card-img-top" alt="${room.name}">
+                        <div class="card-body">
+                            <h3 class="card-title">${room.name}</h3>
+                            <ul class="room-features">
+                                ${room.features.map(feature => `<li><i class="fas fa-check"></i> ${feature}</li>`).join('')}
+                            </ul>
+                            <div class="room-price">Rp ${room.price.toLocaleString('id-ID')}/malam</div>
+                            <button class="btn btn-primary" onclick="selectRoom(${room.id})">Pilih Kamar</button>
+                        </div>
+                    </div>
+                `;
+                roomList.appendChild(roomElement);
+
+                // Tambahkan ke dropdown
+                const option = document.createElement('option');
+                option.value = room.id;
+                option.textContent = `${room.name} - Rp ${room.price.toLocaleString('id-ID')}`;
+                roomSelect.appendChild(option);
+            });
+        }
+
+        // Fungsi untuk memilih kamar
+        function selectRoom(roomId) {
+            const selectedRoom = rooms.find(room => room.id === roomId);
+            if (selectedRoom) {
+                localStorage.setItem('selectedRoom', JSON.stringify(selectedRoom));
+                
+                // Animasi feedback
+                const buttons = document.querySelectorAll('.btn-primary');
+                buttons.forEach(button => {
+                    button.disabled = true;
+                    if (button.textContent.includes(selectedRoom.name)) {
+                        button.innerHTML = '<i class="fas fa-check-circle"></i> Kamar Dipilih';
+                        button.classList.remove('btn-primary');
+                        button.classList.add('btn-success');
+                    } else {
+                        button.style.opacity = '0.6';
+                    }
+                });
+                
+                // Scroll ke form reservasi
+                document.getElementById('reservation-form').scrollIntoView({ behavior: 'smooth' });
+                document.getElementById('room').value = roomId;
+            }
+        }
+
+        // Fungsi untuk menangani form reservasi
+        document.getElementById('bookingForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const roomId = document.getElementById('room').value;
+            const checkin = document.getElementById('checkin').value;
+            const checkout = document.getElementById('checkout').value;
+            const guests = document.getElementById('guests').value;
+
+            if (!name || !email || !phone || !roomId || !checkin || !checkout || !guests) {
+                alert('Harap lengkapi semua field!');
+                return;
+            }
+
+            const selectedRoom = rooms.find(room => room.id === parseInt(roomId));
+            
+            // Simulasi pengiriman data
+            setTimeout(() => {
+                const confirmationId = 'RSV-' + Math.floor(Math.random() * 1000000);
+                
+                const confirmationMessage = `
+                    Reservasi Berhasil!
+                    
+                    Detail Reservasi:
+                    Nama: ${name}
+                    Email: ${email}
+                    Telepon: ${phone}
+                    Kamar: ${selectedRoom.name}
+                    Harga: Rp ${selectedRoom.price.toLocaleString('id-ID')}/malam
+                    Check-in: ${checkin}
+                    Check-out: ${checkout}
+                    Jumlah Tamu: ${guests}
+                    
+                    ID Konfirmasi: ${confirmationId}
+                    
+                    Silakan cek email Anda untuk detail lebih lanjut.
+                `;
+                
+                alert(confirmationMessage);
+                
+                // Reset form
+                this.reset();
+            }, 1000);
+        });
+
         // Mobile menu toggle
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const navLinks = document.getElementById('navLinks');
@@ -450,65 +493,18 @@
                 icon.classList.add('fa-bars');
             }
         });
-        
-        // Login modal functionality
-        const loginBtn = document.getElementById('loginBtn');
-        const loginModal = document.getElementById('loginModal');
-        const loginForm = document.getElementById('loginForm');
-        
-        loginBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            loginModal.style.display = 'flex';
-        });
-        
-        // Close modal when clicking outside
-        window.addEventListener('click', function(e) {
-            if (e.target === loginModal) {
-                loginModal.style.display = 'none';
+
+        // Panggil saat halaman dimuat
+        window.onload = function() {
+            loadRooms();
+            
+            // Tampilkan kamar yang dipilih sebelumnya
+            const savedRoom = localStorage.getItem('selectedRoom');
+            if (savedRoom) {
+                const room = JSON.parse(savedRoom);
+                selectRoom(room.id);
             }
-        });
-        
-        // Form validation
-        loginForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            
-            // Simple validation (in a real app, this would connect to a backend)
-            if (username === 'admin' && password === 'admin123') {
-                alert('Login berhasil! Anda akan diarahkan ke halaman pemesanan.');
-                window.location.href = 'pilihkamar.html';
-            } else if (username === 'user' && password === 'user123') {
-                alert('Login berhasil sebagai tamu!');
-                window.location.href = 'pilihkamar.html';
-            } else {
-                alert('Username atau password salah!');
-            }
-        });
-        
-        // Room selection function
-        function pilihKamar(tipeKamar) {
-            localStorage.setItem('kamarDipilih', tipeKamar);
-            
-            // Animation feedback
-            const buttons = document.querySelectorAll('.btn-primary');
-            buttons.forEach(button => {
-                button.disabled = true;
-                if (button.textContent.includes(tipeKamar)) {
-                    button.innerHTML = '<i class="fas fa-check-circle"></i> Kamar Dipilih';
-                    button.classList.remove('btn-primary');
-                    button.classList.add('btn-success');
-                } else {
-                    button.style.opacity = '0.5';
-                }
-            });
-            
-            // Redirect after 1.5 seconds
-            setTimeout(() => {
-                window.location.href = 'pilihkamar.html?tipe=' + tipeKamar;
-            }, 1500);
-        }
+        };
     </script>
 </body>
 </html>
