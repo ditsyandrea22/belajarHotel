@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proyek Belajar Hotel - Hotel Kami</title>
+    <title>Hotel Kami - Beranda</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -108,21 +108,79 @@
             cursor: pointer;
         }
         
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
+        /* Login Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            align-items: center;
+            justify-content: center;
         }
         
+        .login-form {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            max-width: 400px;
+            width: 90%;
+        }
+        
+        .login-form h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+            font-weight: 500;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .login-btn {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .login-btn:hover {
+            background-color: #3e8e41;
+        }
+        
+        /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('assets/hotel-hero.jpg');
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/hotel-hero.jpg');
             background-size: cover;
             background-position: center;
             color: var(--white);
             text-align: center;
             padding: 5rem 1rem;
-            border-radius: 8px;
             margin-bottom: 3rem;
         }
         
@@ -135,82 +193,6 @@
             font-size: 1.2rem;
             max-width: 800px;
             margin: 0 auto 2rem;
-        }
-        
-        .project-info {
-            background: var(--white);
-            padding: 2rem;
-            margin: 2rem 0;
-            border-radius: 8px;
-            box-shadow: var(--shadow);
-        }
-        
-        .project-info h2 {
-            color: var(--primary-color);
-            margin-top: 0;
-            border-bottom: 2px solid var(--secondary-color);
-            padding-bottom: 0.5rem;
-            display: inline-block;
-        }
-        
-        .feature-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-        
-        .feature-card {
-            background: var(--white);
-            border-radius: 8px;
-            padding: 1.5rem;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s;
-            border-top: 4px solid var(--secondary-color);
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .feature-card i {
-            font-size: 2rem;
-            color: var(--secondary-color);
-            margin-bottom: 1rem;
-        }
-        
-        .feature-card h3 {
-            margin: 0 0 1rem;
-            color: var(--primary-color);
-        }
-        
-        .screenshots {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-        
-        .screenshot-item {
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s;
-        }
-        
-        .screenshot-item:hover {
-            transform: scale(1.03);
-        }
-        
-        .screenshot-item img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.5s;
-        }
-        
-        .screenshot-item:hover img {
-            transform: scale(1.1);
         }
         
         .btn {
@@ -243,83 +225,13 @@
             background: #3d8b40;
         }
         
-        .btn i {
-            font-size: 1rem;
-        }
-        
+        /* Footer */
         footer {
             background: var(--primary-color);
             color: var(--white);
             padding: 2rem 0;
             margin-top: 3rem;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-        
-        .footer-section h3 {
-            color: var(--secondary-color);
-            margin-bottom: 1.5rem;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .footer-section h3::after {
-            content: '';
-            position: absolute;
-            width: 50%;
-            height: 2px;
-            background: var(--secondary-color);
-            bottom: -8px;
-            left: 0;
-        }
-        
-        .footer-section p, .footer-section a {
-            color: #ddd;
-            margin-bottom: 0.8rem;
-            display: block;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-section a:hover {
-            color: var(--secondary-color);
-        }
-        
-        .social-icons {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        
-        .social-icons a {
-            color: var(--white);
-            background: rgba(255, 255, 255, 0.1);
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-        }
-        
-        .social-icons a:hover {
-            background: var(--secondary-color);
-            transform: translateY(-3px);
-        }
-        
-        .copyright {
             text-align: center;
-            padding-top: 2rem;
-            margin-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         /* Responsive Design */
@@ -371,7 +283,7 @@
                 <li><a href="pilihkamar.html"><i class="fas fa-bed"></i> Pilih Kamar</a></li>
                 <li><a href="fasilitas.html"><i class="fas fa-swimming-pool"></i> Fasilitas</a></li>
                 <li><a href="kontak.html"><i class="fas fa-envelope"></i> Kontak</a></li>
-                <li><a href="#" class="btn btn-secondary"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+                <li><a href="#" id="loginBtn"><i class="fas fa-sign-in-alt"></i> Login</a></li>
             </ul>
         </nav>
     </header>
@@ -382,177 +294,26 @@
         <a href="pilihkamar.html" class="btn"><i class="fas fa-calendar-alt"></i> Pesan Sekarang</a>
     </div>
     
-    <div class="container">
-        <section class="project-info">
-            <h2><i class="fas fa-info-circle"></i> Tentang Proyek</h2>
-            <p>Ini adalah proyek belajar untuk membuat sistem manajemen hotel sederhana. Proyek ini dikembangkan sebagai bahan pembelajaran untuk memahami konsep pemrograman web fullstack dan manajemen basis data.</p>
-            
-            <div class="feature-cards">
-                <div class="feature-card">
-                    <i class="fas fa-laptop-code"></i>
-                    <h3>Teknologi Modern</h3>
-                    <p>Menggunakan teknologi terbaru dalam pengembangan web untuk performa optimal</p>
+    <!-- Modal Login -->
+    <div id="loginModal" class="modal">
+        <div class="login-form">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
                 </div>
-                <div class="feature-card">
-                    <i class="fas fa-mobile-alt"></i>
-                    <h3>Responsive Design</h3>
-                    <p>Tampilan yang optimal di semua perangkat, dari desktop hingga mobile</p>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
                 </div>
-                <div class="feature-card">
-                    <i class="fas fa-database"></i>
-                    <h3>Database Terstruktur</h3>
-                    <p>Struktur database yang efisien untuk manajemen data hotel</p>
-                </div>
-            </div>
-        </section>
-        
-        <section class="project-info">
-            <h2><i class="fas fa-star"></i> Fitur Utama</h2>
-            
-            <div class="feature-cards">
-                <div class="feature-card">
-                    <i class="fas fa-door-open"></i>
-                    <h3>Manajemen Kamar</h3>
-                    <p>Sistem lengkap untuk mengelola ketersediaan kamar, tipe kamar, dan harga</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-calendar-check"></i>
-                    <h3>Pemesanan Online</h3>
-                    <p>Proses booking yang mudah dan cepat melalui website</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-chart-line"></i>
-                    <h3>Laporan Pendapatan</h3>
-                    <p>Analisis pendapatan dan statistik pemesanan</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-user-shield"></i>
-                    <h3>Antarmuka Administrasi</h3>
-                    <p>Dashboard admin untuk mengelola seluruh sistem</p>
-                </div>
-            </div>
-        </section>
-        
-        <section class="project-info">
-            <h2><i class="fas fa-cogs"></i> Teknologi yang Digunakan</h2>
-            
-            <div class="feature-cards">
-                <div class="feature-card">
-                    <i class="fab fa-html5"></i>
-                    <h3>HTML5</h3>
-                    <p>Struktur dasar website</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fab fa-css3-alt"></i>
-                    <h3>CSS3</h3>
-                    <p>Styling dan layout</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fab fa-js"></i>
-                    <h3>JavaScript</h3>
-                    <p>Interaktivitas website</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fab fa-php"></i>
-                    <h3>PHP</h3>
-                    <p>Backend processing</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-database"></i>
-                    <h3>MySQL</h3>
-                    <p>Database management</p>
-                </div>
-            </div>
-            
-            <div style="margin-top: 2rem;">
-                <a href="https://github.com/ditsyandrea22/belajarHotel" class="btn" target="_blank">
-                    <i class="fab fa-github"></i> Lihat di GitHub
-                </a>
-                <a href="https://github.com/ditsyandrea22/belajarHotel/archive/refs/heads/main.zip" class="btn btn-secondary" download>
-                    <i class="fas fa-download"></i> Download Proyek
-                </a>
-            </div>
-        </section>
-        
-        <section class="project-info">
-            <h2><i class="fas fa-book"></i> Dokumentasi</h2>
-            <h3>Cara Menggunakan</h3>
-            <ol>
-                <li>Clone atau download repository</li>
-                <li>Import database dari file SQL yang tersedia</li>
-                <li>Konfigurasi koneksi database di file config.php</li>
-                <li>Jalankan di server web lokal (XAMPP, WAMP, dll.)</li>
-                <li>Akses melalui browser</li>
-            </ol>
-            
-            <h3>Kredensial Login</h3>
-            <div class="feature-cards">
-                <div class="feature-card">
-                    <i class="fas fa-user-cog"></i>
-                    <h3>Admin</h3>
-                    <p>Username: admin</p>
-                    <p>Password: password123</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-user-tie"></i>
-                    <h3>Resepsionis</h3>
-                    <p>Username: resepsionis</p>
-                    <p>Password: password123</p>
-                </div>
-            </div>
-        </section>
-        
-        <section class="project-info">
-            <h2><i class="fas fa-camera"></i> Tangkapan Layar</h2>
-            <div class="screenshots">
-                <div class="screenshot-item">
-                    <img src="assets/screenshots/login.jpg" alt="Halaman Login">
-                </div>
-                <div class="screenshot-item">
-                    <img src="assets/screenshots/dashboard.jpg" alt="Dashboard Admin">
-                </div>
-                <div class="screenshot-item">
-                    <img src="assets/screenshots/kamar.jpg" alt="Manajemen Kamar">
-                </div>
-                <div class="screenshot-item">
-                    <img src="assets/screenshots/booking.jpg" alt="Form Pemesanan">
-                </div>
-            </div>
-        </section>
+                <button type="submit" class="login-btn">Login</button>
+            </form>
+        </div>
     </div>
-    
+
     <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Tentang Kami</h3>
-                <p>Hotel Kami menyediakan pengalaman menginap terbaik dengan fasilitas lengkap dan pelayanan prima.</p>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <a href="index.html">Beranda</a>
-                <a href="pilihkamar.html">Pilih Kamar</a>
-                <a href="fasilitas.html">Fasilitas</a>
-                <a href="kontak.html">Kontak</a>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Kontak Kami</h3>
-                <p><i class="fas fa-map-marker-alt"></i> Jl. Contoh No. 123, Bandung</p>
-                <p><i class="fas fa-phone"></i> +62 123 4567 890</p>
-                <p><i class="fas fa-envelope"></i> info@hotelkami.com</p>
-            </div>
-        </div>
-        
-        <div class="copyright">
-            <p>&copy; 2023 Proyek Belajar Hotel | Dibuat oleh ditsyandrea22</p>
-        </div>
+        <p>&copy; 2023 Hotel Kami. Semua hak dilindungi.</p>
     </footer>
 
     <script>
@@ -572,14 +333,40 @@
             }
         });
         
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
+        // Login modal functionality
+        const loginBtn = document.getElementById('loginBtn');
+        const loginModal = document.getElementById('loginModal');
+        const loginForm = document.getElementById('loginForm');
+        
+        loginBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            loginModal.style.display = 'flex';
+        });
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', function(e) {
+            if (e.target === loginModal) {
+                loginModal.style.display = 'none';
+            }
+        });
+        
+        // Form validation
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            // Simple validation (in a real app, this would connect to a backend)
+            if (username === 'admin' && password === 'admin123') {
+                alert('Login berhasil! Anda akan diarahkan ke halaman pemesanan.');
+                window.location.href = 'pilihkamar.html';
+            } else if (username === 'user' && password === 'user123') {
+                alert('Login berhasil sebagai tamu!');
+                window.location.href = 'pilihkamar.html';
+            } else {
+                alert('Username atau password salah!');
+            }
         });
     </script>
 </body>
