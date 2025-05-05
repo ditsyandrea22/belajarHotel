@@ -1,38 +1,51 @@
-Hotel Management Website
-Website Preview
+# Belajar Hotel
 
-📝 Deskripsi
-Website manajemen hotel sederhana yang dibangun menggunakan HTML, CSS, dan JavaScript. Projek ini cocok untuk pembelajaran pengembangan web pemula dengan struktur yang terorganisir dan kode yang mudah dipahami.
+Repositori ini berisi proyek pembelajaran untuk sistem manajemen hotel sederhana.
 
-✨ Fitur Utama
-🌐 5 Halaman Lengkap (Home, About, Rooms, Facilities, Contact)
+## Fitur
 
-📱 Responsive Design (Desktop, Tablet, Mobile)
+- Manajemen Kamar
+  - Tambah kamar
+  - Lihat daftar kamar
+  - Update status kamar
+  - Hapus kamar
 
-🎨 Modern UI dengan animasi sederhana
+- Manajemen Tamu
+  - Check-in tamu
+  - Check-out tamu
+  - Lihat daftar tamu
 
-📝 Form Kontak fungsional
+- Laporan
+  - Laporan pendapatan
+  - Laporan okupansi kamar
 
-🍔 Mobile Navigation (Hamburger Menu)
+## Instalasi
 
-🛠 Teknologi
-<div align="left"> <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5"> <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3"> <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript"> <img src="https://img.shields.io/badge/Font_Awesome-339AF0?style=for-the-badge&logo=fontawesome&logoColor=white" alt="Font Awesome"> </div>
 🚀 Cara Menggunakan
-Clone repository:
-
-bash
-git clone https://github.com/ditsyandrea22/belajarHotel.git
-Buka folder project:
-
-bash
-cd belajarHotel
-Buka file index.html di browser favorit Anda
-
+1. Clone repositori ini:
+   ```bash
+   git clone https://github.com/ditsyandrea22/belajarHotel.git
+   cd belajarHotel
+   
+Buka file index.html di browser favorit Anda saya menggunakan gitpod
 Atau akses langsung via GitHub Pages:
 Open in GitHub Pages
 
+
+## Teknologi
+
+- PHP
+- MySQL
+- Bootstrap (untuk antarmuka)
+- 
+```
+🛠 Teknologi
+<div align="left"> <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5"> <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3"> <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript"> <img src="https://img.shields.io/badge/Font_Awesome-339AF0?style=for-the-badge&logo=fontawesome&logoColor=white" alt="Font Awesome"> </div>
+
+```
+
 📂 Struktur Project
-bash
+```bash
 belajarHotel/
 ├── assets/
 │   ├── css/
@@ -50,9 +63,13 @@ belajarHotel/
 ├── contact.html              # Halaman kontak
 ├── LICENSE
 └── README.md
+
+```
+
 🧩 Komponen Penting
 Navigasi Responsif
 
+```
 html
 <nav class="navbar">
   <div class="logo">Hotel Kita</div>
@@ -78,6 +95,8 @@ css
   text-align: center;
   color: white;
 }
+```
+
 🤝 Berkontribusi
 Kontribusi sangat diterima! Ikuti langkah berikut:
 
@@ -93,6 +112,17 @@ Buat Pull Request
 
 📜 Lisensi
 Dilisensikan di bawah MIT License.
+
+```
+Perbaikan yang dilakukan:
+1. Format judul dan subjudul diperbaiki
+2. Penulisan fitur lebih konsisten
+3. Menambahkan bagian teknologi yang digunakan
+4. Instruksi instalasi lebih jelas
+5. Menambahkan bagian kontribusi dan lisensi
+6. Beberapa typo diperbaiki (contoh: "liat" menjadi "lihat", "tamu" yang salah ketik)
+
+```
 
 📸 Screenshot
 <div align="center"> <img src="assets/img/screenshot-desktop.png" width="45%" alt="Desktop View"> <img src="assets/img/screenshot-mobile.png" width="45%" alt="Mobile View"> </div>
