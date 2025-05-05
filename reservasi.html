@@ -1,75 +1,606 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reservasi Hotel</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Reservasi - Andrea Hotel</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #27ae60;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        
+        .navbar {
+            background-color: var(--primary) !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: white !important;
+        }
+        
+        .nav-link {
+            color: rgba(255,255,255,0.8) !important;
+            font-weight: 500;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: white !important;
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            margin-bottom: 50px;
+        }
+        
+        .booking-card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            background: white;
+        }
+        
+        .form-section {
+            padding: 30px;
+        }
+        
+        .form-control, .form-select {
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        
+        .form-control:focus, .form-select:focus {
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 0.25rem rgba(52, 152, 219, 0.25);
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary);
+            border: none;
+            padding: 12px 25px;
+            font-weight: 600;
+            border-radius: 8px;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary);
+        }
+        
+        .payment-method {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .payment-method:hover {
+            border-color: var(--secondary);
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+        
+        .payment-method.active {
+            border-color: var(--secondary);
+            background-color: rgba(52, 152, 219, 0.1);
+        }
+        
+        .payment-icon {
+            font-size: 2rem;
+            margin-right: 15px;
+            color: var(--secondary);
+        }
+        
+        .bank-logo {
+            height: 30px;
+            margin-right: 10px;
+        }
+        
+        .qr-code {
+            max-width: 200px;
+            margin: 0 auto;
+            display: block;
+        }
+        
+        .summary-card {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+        }
+        
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .summary-total {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                min-height: 40vh;
+            }
+            
+            .form-section {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header class="reservation-header">
-        <h1>Form Reservasi Kamar</h1>
-    </header>
-
-    <main class="reservation-container">
-        <form id="reservation-form">
-            <div class="form-group">
-                <label for="name">Nama Lengkap</label>
-                <input type="text" id="name" required>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-hotel me-2"></i>Andrea Hotel
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="kamar.html">Kamar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="fasilitas.html">Fasilitas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="reservasi.html">Reservasi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="kontak.html">Kontak</a>
+                    </li>
+                </ul>
             </div>
+        </div>
+    </nav>
 
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" required>
-            </div>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold mb-4">Reservasi Kamar</h1>
+            <p class="lead mb-5">Isi form berikut untuk memesan kamar Anda</p>
+        </div>
+    </section>
 
-            <div class="form-group">
-                <label for="phone">Nomor Telepon</label>
-                <input type="tel" id="phone" required>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="check-in">Check-in</label>
-                    <input type="date" id="check-in" required>
+    <!-- Booking Form -->
+    <section class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="booking-card">
+                    <div class="form-section">
+                        <h3 class="mb-4">Informasi Pribadi</h3>
+                        
+                        <form id="reservationForm">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Nama Lengkap</label>
+                                    <input type="text" class="form-control" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" class="form-control" required>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Nomor Telepon</label>
+                                    <input type="tel" class="form-control" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Jumlah Tamu</label>
+                                    <select class="form-select" required>
+                                        <option value="1">1 Orang</option>
+                                        <option value="2" selected>2 Orang</option>
+                                        <option value="3">3 Orang</option>
+                                        <option value="4">4 Orang</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <h3 class="mb-4 mt-5">Detail Reservasi</h3>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Tipe Kamar</label>
+                                    <select class="form-select" id="roomType" required>
+                                        <option value="standar">Kamar Standar</option>
+                                        <option value="deluxe">Kamar Deluxe</option>
+                                        <option value="suite">Kamar Suite</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Jumlah Kamar</label>
+                                    <select class="form-select" id="roomQty" required>
+                                        <option value="1">1 Kamar</option>
+                                        <option value="2">2 Kamar</option>
+                                        <option value="3">3 Kamar</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Tanggal Check-in</label>
+                                    <input type="date" class="form-control" id="checkinDate" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Tanggal Check-out</label>
+                                    <input type="date" class="form-control" id="checkoutDate" readonly required>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Permintaan Khusus</label>
+                                <textarea class="form-control" rows="3" placeholder="Contoh: Tempat tidur tambahan, makanan khusus, dll."></textarea>
+                            </div>
+                            
+                            <h3 class="mb-4 mt-5">Metode Pembayaran</h3>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div class="payment-method active" id="bankPayment" onclick="selectPayment('bank')">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <div class="payment-icon">
+                                                <i class="fas fa-university"></i>
+                                            </div>
+                                            <div>
+                                                <h5>Transfer Bank</h5>
+                                                <p class="text-muted mb-0">Transfer melalui ATM/Internet Banking</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div id="bankDetails">
+                                            <div class="mb-3">
+                                                <label class="form-label">Pilih Bank</label>
+                                                <select class="form-select" id="bankSelect">
+                                                    <option value="bca">BCA - Bank Central Asia</option>
+                                                    <option value="mandiri">Bank Mandiri</option>
+                                                    <option value="bni">BNI - Bank Negara Indonesia</option>
+                                                    <option value="bri">BRI - Bank Rakyat Indonesia</option>
+                                                </select>
+                                            </div>
+                                            
+                                            <div class="alert alert-info">
+                                                <i class="fas fa-info-circle me-2"></i>
+                                                <span id="bankAccount">No. Rekening: 123 456 7890 (Andrea Hotel)</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6 mb-4">
+                                    <div class="payment-method" id="ewalletPayment" onclick="selectPayment('ewallet')">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <div class="payment-icon">
+                                                <i class="fas fa-wallet"></i>
+                                            </div>
+                                            <div>
+                                                <h5>E-Wallet</h5>
+                                                <p class="text-muted mb-0">Bayar melalui aplikasi dompet digital</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div id="ewalletDetails" style="display: none;">
+                                            <div class="mb-3">
+                                                <label class="form-label">Pilih E-Wallet</label>
+                                                <select class="form-select" id="ewalletSelect">
+                                                    <option value="gopay">GoPay</option>
+                                                    <option value="ovo">OVO</option>
+                                                    <option value="dana">DANA</option>
+                                                    <option value="shopeepay">ShopeePay</option>
+                                                    <option value="linkaja">LinkAja</option>
+                                                </select>
+                                            </div>
+                                            
+                                            <div class="text-center">
+                                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=ANDREAHOTEL12345" alt="QR Code Pembayaran" class="qr-code mb-3">
+                                                <div class="alert alert-info">
+                                                    <i class="fas fa-info-circle me-2"></i>
+                                                    <span id="ewalletInstruction">Scan QR code untuk pembayaran</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-check mb-4">
+                                <input class="form-check-input" type="checkbox" id="agreeTerms" required>
+                                <label class="form-check-label" for="agreeTerms">
+                                    Saya menyetujui <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">syarat dan ketentuan</a> yang berlaku
+                                </label>
+                            </div>
+                            
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    <i class="fas fa-check-circle me-2"></i> Konfirmasi Reservasi
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-
-                <div class="form-group">
-                    <label for="check-out">Check-out</label>
-                    <input type="date" id="check-out" required>
+            </div>
+            
+            <div class="col-lg-4">
+                <div class="booking-card">
+                    <div class="form-section">
+                        <h3 class="mb-4">Ringkasan Reservasi</h3>
+                        
+                        <div class="summary-card">
+                            <div class="summary-item">
+                                <span>Tipe Kamar:</span>
+                                <span id="summaryRoomType">Kamar Standar</span>
+                            </div>
+                            <div class="summary-item">
+                                <span>Jumlah Kamar:</span>
+                                <span id="summaryRoomQty">1 Kamar</span>
+                            </div>
+                            <div class="summary-item">
+                                <span>Durasi:</span>
+                                <span id="summaryNights">1 Malam</span>
+                            </div>
+                            <div class="summary-item">
+                                <span>Check-in:</span>
+                                <span id="summaryCheckin">-</span>
+                            </div>
+                            <div class="summary-item">
+                                <span>Check-out:</span>
+                                <span id="summaryCheckout">-</span>
+                            </div>
+                            <hr>
+                            <div class="summary-item">
+                                <span>Harga Kamar:</span>
+                                <span id="summaryRoomPrice">Rp 350.000</span>
+                            </div>
+                            <div class="summary-item">
+                                <span>Pajak (10%):</span>
+                                <span id="summaryTax">Rp 35.000</span>
+                            </div>
+                            <hr>
+                            <div class="summary-item summary-total">
+                                <span>Total:</span>
+                                <span id="summaryTotal">Rp 385.000</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="form-group">
-                <label for="room-type">Tipe Kamar</label>
-                <select id="room-type" required>
-                    <option value="">Pilih Kamar</option>
-                    <option value="superior">Superior - Rp 500.000/malam</option>
-                    <option value="deluxe">Deluxe - Rp 800.000/malam</option>
-                    <option value="suite">Suite - Rp 1.200.000/malam</option>
-                </select>
+    <!-- Terms Modal -->
+    <div class="modal fade" id="termsModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Syarat dan Ketentuan</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>Kebijakan Pembatalan</h6>
+                    <p>Pembatalan lebih dari 7 hari sebelum check-in: biaya pembatalan 10% dari total reservasi. Pembatalan dalam 7 hari sebelum check-in: biaya pembatalan 50% dari total reservasi.</p>
+                    
+                    <h6 class="mt-4">Kebijakan Pembayaran</h6>
+                    <p>Pembayaran penuh diperlukan untuk mengkonfirmasi reservasi. Pembayaran dapat dilakukan melalui transfer bank atau e-wallet.</p>
+                    
+                    <h6 class="mt-4">Kebijakan Check-in/Check-out</h6>
+                    <p>Check-in: 14.00 WIB | Check-out: 12.00 WIB. Early check-in dan late check-out tergantung ketersediaan kamar.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
             </div>
+        </div>
+    </div>
 
-            <div class="form-group">
-                <label for="guests">Jumlah Tamu</label>
-                <input type="number" id="guests" min="1" max="4" value="1" required>
+    <!-- Footer -->
+    <footer class="text-center py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <h5>Andrea Hotel</h5>
+                    <p>Jl. Contoh No. 123, Kota Anda</p>
+                </div>
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <h5>Kontak Kami</h5>
+                    <p>Telp: (021) 1234-5678<br>Email: info@andreahotel.com</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Follow Kami</h5>
+                    <div class="social-icons">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
             </div>
+            <hr class="my-4 bg-light">
+            <p class="mb-0">&copy; 2023 Andrea Hotel. Semua hak dilindungi.</p>
+        </div>
+    </footer>
 
-            <div class="form-group">
-                <label for="requests">Permintaan Khusus</label>
-                <textarea id="requests" rows="3"></textarea>
-            </div>
-
-            <div class="price-summary">
-                <h3>Total Harga:</h3>
-                <div id="price-display">Rp 0</div>
-                <input type="hidden" id="total-price">
-            </div>
-
-            <button type="submit" class="btn">Pesan Sekarang</button>
-        </form>
-    </main>
-
-    <script src="reservasi.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script>
+        // Initialize date picker
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set default check-in date to tomorrow
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            document.getElementById('checkinDate').valueAsDate = tomorrow;
+            
+            // Calculate initial checkout date (1 night)
+            updateCheckoutDate();
+            
+            // Calculate initial price
+            updateSummary();
+        });
+        
+        // Update checkout date when check-in date changes
+        document.getElementById('checkinDate').addEventListener('change', function() {
+            updateCheckoutDate();
+            updateSummary();
+        });
+        
+        // Update summary when room type or quantity changes
+        document.getElementById('roomType').addEventListener('change', updateSummary);
+        document.getElementById('roomQty').addEventListener('change', updateSummary);
+        
+        // Calculate checkout date (1 night stay)
+        function updateCheckoutDate() {
+            const checkinDate = new Date(document.getElementById('checkinDate').value);
+            const checkoutDate = new Date(checkinDate);
+            checkoutDate.setDate(checkinDate.getDate() + 1);
+            
+            document.getElementById('checkoutDate').valueAsDate = checkoutDate;
+        }
+        
+        // Update reservation summary
+        function updateSummary() {
+            const roomPrices = {
+                'standar': 350000,
+                'deluxe': 550000,
+                'suite': 1200000
+            };
+            
+            const roomNames = {
+                'standar': 'Kamar Standar',
+                'deluxe': 'Kamar Deluxe',
+                'suite': 'Kamar Suite'
+            };
+            
+            const roomType = document.getElementById('roomType').value;
+            const roomQty = document.getElementById('roomQty').value;
+            const checkinDate = document.getElementById('checkinDate').value;
+            
+            // Calculate prices
+            const roomPrice = roomPrices[roomType] * parseInt(roomQty);
+            const tax = Math.round(roomPrice * 0.1);
+            const total = roomPrice + tax;
+            
+            // Update summary display
+            document.getElementById('summaryRoomType').textContent = roomNames[roomType];
+            document.getElementById('summaryRoomQty').textContent = roomQty + ' Kamar';
+            document.getElementById('summaryNights').textContent = '1 Malam';
+            document.getElementById('summaryCheckin').textContent = formatDate(checkinDate);
+            
+            const checkoutDate = new Date(checkinDate);
+            checkoutDate.setDate(checkoutDate.getDate() + 1);
+            document.getElementById('summaryCheckout').textContent = formatDate(checkoutDate);
+            
+            document.getElementById('summaryRoomPrice').textContent = 'Rp ' + roomPrice.toLocaleString('id-ID');
+            document.getElementById('summaryTax').textContent = 'Rp ' + tax.toLocaleString('id-ID');
+            document.getElementById('summaryTotal').textContent = 'Rp ' + total.toLocaleString('id-ID');
+        }
+        
+        // Format date to DD/MM/YYYY
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('id-ID', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric'
+            });
+        }
+        
+        // Payment method selection
+        function selectPayment(method) {
+            document.getElementById('bankPayment').classList.remove('active');
+            document.getElementById('ewalletPayment').classList.remove('active');
+            document.getElementById('bankDetails').style.display = 'block';
+            document.getElementById('ewalletDetails').style.display = 'none';
+            
+            if (method === 'bank') {
+                document.getElementById('bankPayment').classList.add('active');
+            } else {
+                document.getElementById('ewalletPayment').classList.add('active');
+                document.getElementById('bankDetails').style.display = 'none';
+                document.getElementById('ewalletDetails').style.display = 'block';
+            }
+        }
+        
+        // Form submission
+        document.getElementById('reservationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const formData = {
+                name: this.elements[0].value,
+                email: this.elements[1].value,
+                phone: this.elements[2].value,
+                guests: this.elements[3].value,
+                roomType: this.elements[4].value,
+                roomQty: this.elements[5].value,
+                checkin: this.elements[6].value,
+                checkout: this.elements[7].value,
+                specialRequest: this.elements[8].value,
+                paymentMethod: document.querySelector('.payment-method.active h5').textContent,
+                total: document.getElementById('summaryTotal').textContent
+            };
+            
+            // In a real app, you would send this data to a server
+            console.log('Reservation data:', formData);
+            
+            // Show success message
+            alert(`Reservasi berhasil!\n\nTotal Pembayaran: ${formData.total}\n\nKode Booking: ANDREA-${Math.floor(100000 + Math.random() * 900000)}`);
+            
+            // Reset form
+            this.reset();
+            
+            // Set default dates again
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            document.getElementById('checkinDate').valueAsDate = tomorrow;
+            updateCheckoutDate();
+            updateSummary();
+        });
+    </script>
 </body>
 </html>
