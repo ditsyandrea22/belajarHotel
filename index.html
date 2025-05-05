@@ -6,6 +6,27 @@
     <meta name="description" content="Hotel bintang 4 dengan fasilitas lengkap dan pelayanan terbaik di kota">
     <title>Andrea Hotel - Penginapan Nyaman & Mewah</title>
     
+    <!-- Fix for Ethereum provider conflicts -->
+    <script>
+    (function() {
+        const ETHEREUM_PROPERTY = '__original_ethereum__';
+        
+        if (typeof window.ethereum !== 'undefined') {
+            window[ETHEREUM_PROPERTY] = window.ethereum;
+            
+            Object.defineProperty(window, 'ethereum', {
+                get: () => window[ETHEREUM_PROPERTY],
+                set: () => {
+                    console.warn('Percobaan modifikasi window.ethereum diblokir');
+                    return false;
+                },
+                configurable: false,
+                enumerable: true
+            });
+        }
+    })();
+    </script>
+    
     <!-- Favicon -->
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
     
@@ -17,11 +38,52 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
+    
+    <style>
+    /* Image fallback styles */
+    img {
+        max-width: 100%;
+        height: auto;
+        background-color: #f8f9fa;
+        position: relative;
+    }
+    
+    img::after {
+        content: attr(alt) " tidak tersedia";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #f8f9fa;
+        color: #6c757d;
+        text-align: center;
+        padding-top: 50px;
+        border: 1px dashed #ddd;
+        font-size: 14px;
+    }
+    
+    /* Hero section styles */
+    .hero-section {
+        background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                    url('assets/images/hero-bg.jpg') center/cover no-repeat;
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+    }
+    
+    /* Room card images */
+    .room-card img {
+        height: 250px;
+        object-fit: cover;
+    }
+    </style>
 </head>
 <body>
     <!-- Header/Navbar -->
     <header class="main-header">
-        <nav class="navbar navbar-expand-lg navbar-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
                 <a class="navbar-brand" href="index.html">
                     <i class="fas fa-hotel me-2"></i>
@@ -70,9 +132,8 @@
         </nav>
     </header>
 
-    <!-- Hero Section with Picture Element -->
+    <!-- Hero Section -->
     <section class="hero-section">
-        <div class="hero-overlay"></div>
         <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-12 text-center text-white">
@@ -115,11 +176,7 @@
                 <div class="col-lg-6">
                     <div class="about-image-container">
                         <picture>
-                            <!-- WebP format for modern browsers -->
                             <source srcset="assets/images/hotel-lobby.webp" type="image/webp">
-                            <!-- Fallback for older browsers -->
-                            <source srcset="assets/images/hotel-lobby.jpg" type="image/jpeg">
-                            <!-- Default image -->
                             <img src="assets/images/hotel-lobby.jpg" 
                                  alt="Lobby Andrea Hotel" 
                                  class="img-fluid rounded shadow" 
@@ -132,7 +189,7 @@
         </div>
     </section>
 
-    <!-- Room Preview Section with Responsive Images -->
+    <!-- Room Preview Section -->
     <section class="room-section py-5 bg-light">
         <div class="container">
             <div class="text-center mb-5">
@@ -141,12 +198,11 @@
             </div>
             
             <div class="row g-4">
+                <!-- Standard Room -->
                 <div class="col-md-4">
                     <div class="card room-card h-100 border-0 shadow-sm">
                         <picture>
-                            <source media="(min-width: 992px)" srcset="assets/images/kamar-standar-large.webp">
-                            <source media="(min-width: 576px)" srcset="assets/images/kamar-standar-medium.webp">
-                            <source srcset="assets/images/kamar-standar-small.webp" type="image/webp">
+                            <source srcset="assets/images/kamar-standar.webp" type="image/webp">
                             <img src="assets/images/kamar-standar.jpg" 
                                  class="card-img-top" 
                                  alt="Kamar Standar Andrea Hotel" 
@@ -174,12 +230,11 @@
                     </div>
                 </div>
                 
+                <!-- Deluxe Room -->
                 <div class="col-md-4">
                     <div class="card room-card h-100 border-0 shadow-sm">
                         <picture>
-                            <source media="(min-width: 992px)" srcset="assets/images/kamar-deluxe-large.webp">
-                            <source media="(min-width: 576px)" srcset="assets/images/kamar-deluxe-medium.webp">
-                            <source srcset="assets/images/kamar-deluxe-small.webp" type="image/webp">
+                            <source srcset="assets/images/kamar-deluxe.webp" type="image/webp">
                             <img src="assets/images/kamar-deluxe.jpg" 
                                  class="card-img-top" 
                                  alt="Kamar Deluxe Andrea Hotel" 
@@ -207,12 +262,11 @@
                     </div>
                 </div>
                 
+                <!-- Suite Room -->
                 <div class="col-md-4">
                     <div class="card room-card h-100 border-0 shadow-sm">
                         <picture>
-                            <source media="(min-width: 992px)" srcset="assets/images/kamar-suite-large.webp">
-                            <source media="(min-width: 576px)" srcset="assets/images/kamar-suite-medium.webp">
-                            <source srcset="assets/images/kamar-suite-small.webp" type="image/webp">
+                            <source srcset="assets/images/kamar-suite.webp" type="image/webp">
                             <img src="assets/images/kamar-suite.jpg" 
                                  class="card-img-top" 
                                  alt="Suite Andrea Hotel" 
@@ -321,7 +375,7 @@
         </div>
     </section>
 
-    <!-- Testimonial Section with Optimized Images -->
+    <!-- Testimonial Section -->
     <section class="testimonial-section py-5 bg-light">
         <div class="container">
             <div class="text-center mb-5">
@@ -396,13 +450,11 @@
         </div>
     </section>
 
-    <!-- CTA Section with Background Picture Element -->
+    <!-- CTA Section -->
     <section class="cta-section py-5 text-white">
         <div class="cta-overlay"></div>
         <picture class="cta-background">
-            <source media="(min-width: 992px)" srcset="assets/images/cta-bg-large.webp">
-            <source media="(min-width: 576px)" srcset="assets/images/cta-bg-medium.webp">
-            <source srcset="assets/images/cta-bg-small.webp" type="image/webp">
+            <source srcset="assets/images/cta-bg.webp" type="image/webp">
             <img src="assets/images/cta-bg.jpg" 
                  alt="Andrea Hotel Call to Action Background" 
                  loading="lazy"
