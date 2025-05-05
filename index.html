@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hotel Kami - Beranda</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         :root {
             --primary-color: #2c3e50;
@@ -225,6 +226,61 @@
             background: #3d8b40;
         }
         
+        /* Room Section */
+        .room-section {
+            padding: 3rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+        }
+        
+        .room-card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+        }
+        
+        .room-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .card-title {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .room-features li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .room-features i {
+            color: var(--secondary-color);
+            width: 20px;
+            text-align: center;
+            margin-right: 8px;
+        }
+        
+        .btn-primary {
+            background-color: var(--accent-color);
+            border: none;
+            margin-top: 1rem;
+        }
+        
+        .btn-primary:hover {
+            background-color: #2980b9;
+        }
+        
         /* Footer */
         footer {
             background: var(--primary-color);
@@ -263,6 +319,10 @@
             .hero p {
                 font-size: 1rem;
             }
+            
+            .room-card {
+                margin-bottom: 2rem;
+            }
         }
     </style>
 </head>
@@ -293,6 +353,64 @@
         <p>Pengalaman menginap yang tak terlupakan dengan pelayanan terbaik dan fasilitas lengkap</p>
         <a href="pilihkamar.html" class="btn"><i class="fas fa-calendar-alt"></i> Pesan Sekarang</a>
     </div>
+    
+    <!-- Room Section -->
+    <section class="room-section">
+        <div class="container">
+            <h2 class="section-title">Kamar Kami</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card room-card h-100">
+                        <img src="img/kamar-standar.jpg" class="card-img-top" alt="Kamar Standar dengan tempat tidur queen-size dan meja kerja">
+                        <div class="card-body">
+                            <h3 class="card-title">Kamar Standar</h3>
+                            <ul class="room-features list-unstyled">
+                                <li><i class="fas fa-wifi"></i> Wi-Fi Gratis</li>
+                                <li><i class="fas fa-tv"></i> TV 32"</li>
+                                <li><i class="fas fa-bed"></i> Queen Size Bed</li>
+                                <li><i class="fas fa-bath"></i> Kamar Mandi Pribadi</li>
+                            </ul>
+                            <button class="btn btn-primary" onclick="pilihKamar('standar')">Pilih Kamar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="card room-card h-100">
+                        <img src="img/kamar-deluxe.jpg" class="card-img-top" alt="Kamar Deluxe dengan tempat tidur king-size dan pemandangan kota">
+                        <div class="card-body">
+                            <h3 class="card-title">Kamar Deluxe</h3>
+                            <ul class="room-features list-unstyled">
+                                <li><i class="fas fa-wifi"></i> Wi-Fi Gratis</li>
+                                <li><i class="fas fa-tv"></i> TV 42"</li>
+                                <li><i class="fas fa-bed"></i> King Size Bed</li>
+                                <li><i class="fas fa-bath"></i> Kamar Mandi dengan Bathtub</li>
+                                <li><i class="fas fa-coffee"></i> Minibar</li>
+                            </ul>
+                            <button class="btn btn-primary" onclick="pilihKamar('deluxe')">Pilih Kamar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="card room-card h-100">
+                        <img src="img/kamar-suite.jpg" class="card-img-top" alt="Kamar Suite dengan ruang tamu terpisah dan balkon pribadi">
+                        <div class="card-body">
+                            <h3 class="card-title">Kamar Suite</h3>
+                            <ul class="room-features list-unstyled">
+                                <li><i class="fas fa-wifi"></i> Wi-Fi Gratis</li>
+                                <li><i class="fas fa-tv"></i> TV 55"</li>
+                                <li><i class="fas fa-bed"></i> King Size Bed</li>
+                                <li><i class="fas fa-couch"></i> Ruang Tamu Terpisah</li>
+                                <li><i class="fas fa-umbrella-beach"></i> Balkon Pribadi</li>
+                            </ul>
+                            <button class="btn btn-primary" onclick="pilihKamar('suite')">Pilih Kamar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     
     <!-- Modal Login -->
     <div id="loginModal" class="modal">
@@ -368,6 +486,29 @@
                 alert('Username atau password salah!');
             }
         });
+        
+        // Room selection function
+        function pilihKamar(tipeKamar) {
+            localStorage.setItem('kamarDipilih', tipeKamar);
+            
+            // Animation feedback
+            const buttons = document.querySelectorAll('.btn-primary');
+            buttons.forEach(button => {
+                button.disabled = true;
+                if (button.textContent.includes(tipeKamar)) {
+                    button.innerHTML = '<i class="fas fa-check-circle"></i> Kamar Dipilih';
+                    button.classList.remove('btn-primary');
+                    button.classList.add('btn-success');
+                } else {
+                    button.style.opacity = '0.5';
+                }
+            });
+            
+            // Redirect after 1.5 seconds
+            setTimeout(() => {
+                window.location.href = 'pilihkamar.html?tipe=' + tipeKamar;
+            }, 1500);
+        }
     </script>
 </body>
 </html>
