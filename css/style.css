@@ -1,0 +1,58 @@
+/* Invoice Action Buttons */
+.btn {
+    display: inline-block;
+    padding: 8px 15px;
+    margin: 5px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.btn-info {
+    background-color: #17a2b8;
+}
+
+.btn-info:hover {
+    background-color: #138496;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+.btn-success {
+    background-color: #28a745;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+
+.fas {
+    margin-right: 5px;
+}
+
+.invoice-actions {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.btn-pdf {
+    background-color: #e74c3c;
+}
+
+.btn-email {
+    background-color: #3498db;
+}
+
+.btn-print {
+    background-color: #2ecc71;
+}
