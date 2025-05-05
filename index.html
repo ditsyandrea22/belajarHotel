@@ -283,6 +283,14 @@
         }
     </style>
 </head>
+<script>
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = document.getElementById('name').value;
+        alert(`Thank you, ${name}! We'll contact you shortly.`);
+        this.reset();
+    });
+</script>
 <body>
     <header>
         <nav>
@@ -303,6 +311,17 @@
                 <li><a href="#" id="loginBtn"><i class="fas fa-sign-in-alt"></i> Login</a></li>
             </ul>
         </nav>
+    </header>
+
+    <header>
+        <nav>
+            <ul style="display: flex; gap: 20px; list-style: none; padding: 1rem;">
+                <li><a href="#rooms" style="color: white; text-decoration: none;">Rooms</a></li>
+                <li><a href="#amenities" style="color: white; text-decoration: none;">Amenities</a></li>
+                <li><a href="#contact" style="color: white; text-decoration: none;">Contact</a></li>
+            </ul>
+        </nav>
+        <!-- Rest of hero content -->
     </header>
 
     <header>
@@ -442,6 +461,10 @@
 
     <footer>
         <p>&copy; 2023 Hotel Kami. Semua hak dilindungi.</p>
+    </footer>
+
+    <footer style="background: #333; color: white; text-align: center; padding: 2rem;">
+        <p>&copy; 2023 BelajarHotel. All rights reserved.</p>
     </footer>
 
     <script>
