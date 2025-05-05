@@ -1,58 +1,84 @@
-/* Invoice Action Buttons */
-.btn {
-    display: inline-block;
-    padding: 8px 15px;
-    margin: 5px;
-    border-radius: 4px;
-    text-decoration: none;
-    color: white;
-    font-size: 14px;
-    transition: all 0.3s;
-}
-
-.btn-info {
-    background-color: #17a2b8;
-}
-
-.btn-info:hover {
-    background-color: #138496;
-}
-
-.btn-danger {
-    background-color: #dc3545;
-}
-
-.btn-danger:hover {
-    background-color: #c82333;
-}
-
-.btn-success {
-    background-color: #28a745;
-}
-
-.btn-success:hover {
-    background-color: #218838;
-}
-
-.fas {
-    margin-right: 5px;
-}
-
-.invoice-actions {
+/* Style untuk pemilihan kamar */
+.room-selection {
+    padding: 50px 0;
     text-align: center;
-    margin-top: 20px;
-    padding-top: 20px;
-    border-top: 1px solid #eee;
 }
 
-.btn-pdf {
-    background-color: #e74c3c;
+.room-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 20px;
 }
 
-.btn-email {
-    background-color: #3498db;
+.room-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    overflow: hidden;
+    width: 300px;
+    transition: transform 0.3s ease;
 }
 
-.btn-print {
-    background-color: #2ecc71;
+.room-card:hover {
+    transform: translateY(-10px);
+}
+
+.room-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.room-card h3 {
+    margin: 15px 0 10px;
+    color: #333;
+}
+
+.room-card p {
+    padding: 0 20px;
+    color: #666;
+    font-size: 14px;
+}
+
+.room-features {
+    text-align: left;
+    padding: 0 20px;
+    margin: 15px 0;
+    list-style-type: none;
+}
+
+.room-features li {
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #555;
+}
+
+.room-features li:before {
+    content: "✓ ";
+    color: #4CAF50;
+}
+
+.room-price {
+    font-size: 20px;
+    font-weight: bold;
+    color: #2196F3;
+    margin: 15px 0;
+}
+
+.book-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.book-btn:hover {
+    background-color: #45a049;
 }
