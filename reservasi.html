@@ -1,0 +1,80 @@
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Element references
+        const form = document.getElementById('reservation-form');
+        const checkIn = document.getElementById('check-in');
+        const checkOut = document.getElementById('check-out');
+        const roomType = document.getElementById('room-type');
+        const totalPrice = document.getElementById('total-price');
+        const priceDisplay = document.getElementById('price-display');
+        
+        // Harga kamar
+        const roomPrices = {
+            'superior': 500000,
+            'deluxe': 800000,
+            'suite': 1200000
+        };
+
+        // Update harga saat kamar berubah
+        roomType.addEventListener('change', calculateTotal);
+        
+        // Hitung total saat tanggal berubah
+        checkIn.addEventListener('change', function() {
+            checkOut.min = this.value;
+            if(checkOut.value) calculateTotal();
+        });
+        
+        checkOut.addEventListener('change', calculateTotal);
+
+        // Fungsi hitung total
+        function calculateTotal() {
+            if(checkIn.value && checkOut.value && roomType.value) {
+                const diffTime = Math.abs(new Date(checkOut.value) - new Date(checkIn.value));
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                
+                if(diffDays > 0) {
+                    const price = roomPrices[roomType.value] * diffDays;
+                    totalPrice.value = price;
+                    priceDisplay.textContent = `Rp ${price.toLocaleString('id-ID')} (${diffDays} malam)`;
+                } else {
+                    alert('Tanggal check-out harus setelah check-in');
+                    checkOut.value = '';
+                }
+            }
+        }
+
+        // Form submission
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simple validation
+            if(!form.checkValidity()) {
+                alert('Harap isi semua field yang wajib diisi!');
+                return;
+            }
+
+            // Simpan ke localStorage
+            const reservation = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                checkIn: checkIn.value,
+                checkOut: checkOut.value,
+                roomType: roomType.options[roomType.selectedIndex].text,
+                totalPrice: totalPrice.value,
+                specialRequest: document.getElementById('requests').value
+            };
+
+            localStorage.setItem('lastReservation', JSON.stringify(reservation));
+            
+            // Tampilkan konfirmasi
+            alert(`Reservasi berhasil!\nAtas nama: ${reservation.name}\nTotal: Rp ${parseInt(reservation.totalPrice).toLocaleString('id-ID')}`);
+            form.reset();
+            priceDisplay.textContent = 'Rp 0';
+        });
+
+        // Load today's date as default check-in
+        const today = new Date().toISOString().split('T')[0];
+        checkIn.min = today;
+    });
+</script>
