@@ -1,84 +1,90 @@
-/* Style untuk pemilihan kamar */
-.room-selection {
-    padding: 50px 0;
-    text-align: center;
-}
-
-.room-container {
+/* Style untuk navigasi */
+nav {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    padding: 20px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background-color: #333;
+    color: white;
 }
 
-.room-card {
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    overflow: hidden;
-    width: 300px;
-    transition: transform 0.3s ease;
+nav ul {
+    display: flex;
+    list-style: none;
 }
 
-.room-card:hover {
-    transform: translateY(-10px);
+nav ul li {
+    margin-left: 2rem;
 }
 
-.room-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
 }
 
-.room-card h3 {
-    margin: 15px 0 10px;
-    color: #333;
-}
-
-.room-card p {
-    padding: 0 20px;
-    color: #666;
-    font-size: 14px;
-}
-
-.room-features {
-    text-align: left;
-    padding: 0 20px;
-    margin: 15px 0;
-    list-style-type: none;
-}
-
-.room-features li {
-    margin-bottom: 5px;
-    font-size: 14px;
-    color: #555;
-}
-
-.room-features li:before {
-    content: "✓ ";
+nav ul li a:hover, 
+nav ul li a.active {
     color: #4CAF50;
 }
 
-.room-price {
-    font-size: 20px;
-    font-weight: bold;
-    color: #2196F3;
-    margin: 15px 0;
+.logo h1 {
+    margin: 0;
+    font-size: 1.5rem;
 }
 
-.book-btn {
+/* Style untuk form reservasi */
+#reservation-form {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+#reservation-form h2 {
+    margin-top: 0;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+
+.form-group input, 
+.form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+button[type="submit"] {
     background-color: #4CAF50;
     color: white;
     border: none;
-    padding: 10px 20px;
-    margin-bottom: 20px;
-    border-radius: 5px;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 4px;
     cursor: pointer;
-    font-size: 16px;
     transition: background-color 0.3s;
 }
 
-.book-btn:hover {
+button[type="submit"]:hover {
     background-color: #45a049;
+}
+
+.error {
+    color: #f44336;
+    text-align: center;
+    padding: 1rem;
 }
