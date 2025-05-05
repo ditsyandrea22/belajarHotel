@@ -1,25 +1,50 @@
+/* ===== VARIABEL CSS ===== */
+:root {
+    --primary-color: #007BFF;
+    --primary-dark: #0056b3;
+    --secondary-color: #333;
+    --light-bg: #f4f4f4;
+    --text-color: #333;
+    --white: #fff;
+    --border-radius: 8px;
+    --box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
 /* ===== Gaya Umum ===== */
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
     line-height: 1.6;
+    color: var(--text-color);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
 }
 
 /* ===== Header ===== */
 .header {
-    background-color: #007BFF;
-    color: white;
+    background-color: var(--primary-color);
+    color: var(--white);
     padding: 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-shadow: var(--box-shadow);
 }
 
 .header a {
-    color: white;
+    color: var(--white);
     text-decoration: none;
     margin: 0 15px;
+    transition: opacity 0.3s ease;
+}
+
+.header a:hover {
+    opacity: 0.8;
 }
 
 .header a.active {
@@ -30,17 +55,16 @@ body {
 /* ===== Kontak Container ===== */
 .kontak-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
-    padding: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
+    padding: 2rem 0;
 }
 
 .kontak-info {
-    background: #f4f4f4;
+    background: var(--light-bg);
     padding: 2rem;
-    border-radius: 8px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
 }
 
 .info-item {
@@ -51,75 +75,89 @@ body {
 
 .info-item i {
     margin-right: 1rem;
-    color: #007BFF;
+    color: var(--primary-color);
+    font-size: 1.2rem;
 }
 
 /* ===== Kontak Form ===== */
+.kontak-form {
+    display: flex;
+    flex-direction: column;
+}
+
 .kontak-form input, 
 .kontak-form textarea {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     margin-bottom: 1rem;
     border: 1px solid #ddd;
     border-radius: 4px;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+}
+
+.kontak-form input:focus, 
+.kontak-form textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
 }
 
 .kontak-form textarea {
-    height: 150px;
+    min-height: 150px;
     resize: vertical;
 }
 
 .kontak-form button {
-    background: #007BFF;
-    color: white;
+    background: var(--primary-color);
+    color: var(--white);
     border: none;
-    padding: 10px 20px;
+    padding: 12px 24px;
     cursor: pointer;
     border-radius: 4px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    align-self: flex-start;
 }
 
 .kontak-form button:hover {
-    background: #0056b3;
+    background: var(--primary-dark);
 }
 
 /* ===== Footer ===== */
 .footer {
     text-align: center;
-    padding: 1rem;
-    background: #333;
-    color: white;
+    padding: 1.5rem;
+    background: var(--secondary-color);
+    color: var(--white);
+    margin-top: 2rem;
 }
 
 /* ===== Responsive Styles ===== */
 @media (max-width: 768px) {
-    .kontak-container {
-        grid-template-columns: 1fr;
-    }
-
-    .room-card {
-        padding: 10px;
-        margin-bottom: 20px;
-    }
-
-    h1, h2 {
-        font-size: 1.5rem !important;
-    }
-
-    .card-text,
-    .room-features li {
-        font-size: 0.9rem;
-    }
-
-    .navbar-brand {
-        font-size: 1.2rem;
-    }
-
     .header {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
+        text-align: center;
     }
 
     .header a {
         margin: 5px 0;
+        display: block;
+    }
+
+    .kontak-container {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+
+    .kontak-info, 
+    .kontak-form {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .kontak-form button {
+        width: 100%;
     }
 }
