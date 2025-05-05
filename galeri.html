@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Galeri foto Hotel Kami - Lihat fasilitas, kamar, dan area hotel kami">
+    <title>Galeri | Hotel Kami</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Lightbox CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- Galeri CSS -->
+    <link rel="stylesheet" href="assets/css/galeri.css">
+</head>
+<body>
+    <!-- Header/Navbar -->
+    <header class="main-header">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <i class="fas fa-hotel me-2"></i>
+                    <span>Hotel Kami</span>
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">
+                                <i class="fas fa-home me-1"></i> Beranda
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="kamar.html">
+                                <i class="fas fa-bed me-1"></i> Kamar
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="fasilitas.html">
+                                <i class="fas fa-swimming-pool me-1"></i> Fasilitas
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="galeri.html">
+                                <i class="fas fa-images me-1"></i> Galeri
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="kontak.html">
+                                <i class="fas fa-envelope me-1"></i> Kontak
+                            </a>
+                        </li>
+                        <li class="nav-item ms-lg-3">
+                            <a class="btn btn-primary" href="reservasi.html">
+                                <i class="fas fa-bookmark me-1"></i> Reservasi
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Breadcrumb -->
+    <section class="breadcrumb-section py-4">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Beranda</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Galeri</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Galeri Header -->
+    <section class="galeri-header py-5 bg-light">
+        <div class="container text-center">
+            <h1 class="display-5 fw-bold mb-3">Galeri Hotel Kami</h1>
+            <p class="lead">Lihat koleksi foto kamar, fasilitas, dan area hotel kami</p>
+        </div>
+    </section>
+
+    <!-- Galeri Filter -->
+    <section class="galeri-filter py-4 bg-white sticky-top">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <ul class="nav nav-pills justify-content-center" id="galeriFilter">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#" data-filter="all">Semua</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-filter="kamar">Kamar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-filter="restoran">Restoran</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-filter="kolam-renang">Kolam Renang</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-filter="spa">Spa</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-filter="lobby">Lobby</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeri Content -->
+    <section class="galeri-content py-5">
+        <div class="container">
+            <div class="row g-4" id="galeriGrid">
+                <!-- Kamar -->
+                <div class="col-lg-4 col-md-6 galeri-item" data-category="kamar">
+                    <div class="galeri-card">
+                        <a href="assets/images/galeri/kamar-1.jpg" data-lightbox="kamar" data-title="Kamar Standar">
+                            <img src="assets/images/galeri/kamar-1-thumb.jpg" alt="Kamar Standar" class="img-fluid">
+                            <div class="galeri-overlay">
+                                <div class="galeri-caption">
+                                    <h5>Kamar Standar</h5>
+                                    <p>Kamar nyaman dengan fasilitas lengkap</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 galeri-item" data-category="kamar">
+                    <div class="galeri-card">
+                        <a href="assets/images/galeri/kamar-2.jpg" data-lightbox="kamar" data-title="Kamar Deluxe">
+                            <img src="assets/images/galeri/kamar-2-thumb.jpg" alt="Kamar Deluxe" class="img-fluid">
+                            <div class="galeri-overlay">
+                                <div class="galeri-caption">
+                                    <h5>Kamar Deluxe</h5>
+                                    <p>Kamar lebih luas dengan view kota</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 galeri-item" data-category="kamar">
+                    <div class="galeri-card">
+                        <a href="assets/images/galeri/kamar-3.jpg" data-lightbox="kamar" data-title="Suite">
+                            <img src="assets/images/galeri/kamar-3-thumb.jpg" alt="Suite" class="img-fluid">
+                            <div class="galery-overlay">
+                                <div class="galeri-caption">
+                                    <h5>Suite</h5>
+                                    <p>Kamar mewah dengan ruang tamu terpisah</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Restoran -->
+                <div class="col-lg-4 col-md-6 galeri-item" data-category="restoran">
+                    <div class="galeri-card">
+                        <a href="assets/images/galeri/restoran-1.jpg" data-lightbox="restoran" data-title="Restoran Utama">
+                            <img src="assets/images/galeri/restoran-1-thumb.jpg" alt="Restoran Utama" class="img-fluid">
+                            <div class="galeri-overlay">
+                                <div class="galeri-caption">
+                                    <h5>Restoran Utama</h5>
+                                    <p>Area makan dengan berbagai menu pilihan</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 galeri-item" data-category="restoran">
+                    <div class="galeri-card">
+                        <a href="assets/images/galeri/restoran-2.jpg" data-lightbox="restoran" data-title="Sarapan Pagi">
+                            <img src="assets/images/galeri/restoran-2-thumb.jpg" alt="Sarapan Pagi" class="img-fluid">
+                            <div class="galeri-overlay">
+                                <div class="galeri-caption">
+                                    <h5>Sarapan Pagi</h5>
+                                    <p>Berbagai hidangan sarapan sehat</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Kolam Renang -->
+                <div class="col-lg-4 col-md-6 galeri-item" data-category="kolam-renang">
+                    <div class="galeri-card">
+                        <a href="assets/images/galeri/pool-1.jpg" data-lightbox="kolam-renang" data-title="Kolam Renang Outdoor">
+                            <img src="assets/images/galeri/pool-1-thumb.jpg" alt="Kolam Renang Outdoor" class="img-fluid">
+                            <div class="galeri-overlay">
+                                <div class="galeri-caption">
+                                    <h5>Kolam Renang Outdoor</h5>
+                                    <p>Area bersantai dengan view kota</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 galeri-item" data-category="kolam-renang">
+                    <div class="galeri-card">
+                        <a href="assets/images/galeri/pool-2.jpg" data-lightbox="kolam-renang" data-title="Area Bersantai">
+                            <img src="assets/images/galeri/pool-2-thumb.jpg" alt="Area Bersantai" class="img-fluid">
+                            <div class="galeri-overlay">
+                                <div class="galeri-caption">
+                                    <h5>Area Bersantai</h5>
+                                    <p>Tempat relaksasi setelah berenang</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Spa -->
+                <div class="col-lg-4 col-md-6 galeri-item" data-category="spa">
+                    <div class="galeri-card">
+                        <a href="assets/images/galeri/spa-1.jpg" data-lightbox="spa" data-title="Spa & Wellness">
+                            <img src="assets/images/galeri/spa-1-thumb.jpg" alt="Spa & Wellness" class="img-fluid">
+                            <div class="galeri-overlay">
+                                <div class="galeri-caption">
+                                    <h5>Spa & Wellness</h5>
+                                    <p>Perawatan tubuh profesional</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Lobby -->
+                <div class="col-lg-4 col-md-6 galeri-item" data-category="lobby">
+                    <div class="galeri-card">
+                        <a href="assets/images/galeri/lobby-1.jpg" data-lightbox="lobby" data-title="Lobby Hotel">
+                            <img src="assets/images/galeri/lobby-1-thumb.jpg" alt="Lobby Hotel" class="img-fluid">
+                            <div class="galeri-overlay">
+                                <div class="galeri-caption">
+                                    <h5>Lobby Hotel</h5>
+                                    <p>Area penerimaan tamu yang mewah</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 galeri-item" data-category="lobby">
+                    <div class="galeri-card">
+                        <a href="assets/images/galeri/lobby-2.jpg" data-lightbox="lobby" data-title="Lounge">
+                            <img src="assets/images/galeri/lobby-2-thumb.jpg" alt="Lounge" class="img-fluid">
+                            <div class="galeri-overlay">
+                                <div class="galeri-caption">
+                                    <h5>Lounge</h5>
+                                    <p>Tempat bersantai sambil menikmati minuman</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Load More Button -->
+            <div class="text-center mt-5">
+                <button id="loadMore" class="btn btn-outline-primary px-4">
+                    <i class="fas fa-plus me-2"></i> Muat Lebih Banyak
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-5 bg-dark text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h5 class="mb-4">
+                        <i class="fas fa-hotel me-2"></i> Hotel Kami
+                    </h5>
+                    <p>Hotel bintang 4 dengan fasilitas lengkap dan pelayanan terbaik di kota. Memberikan pengalaman menginap yang tak terlupakan.</p>
+                    <div class="social-links mt-4">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-youtube fa-lg"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                    <h5 class="mb-4">Tautan Cepat</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="index.html" class="text-white">Beranda</a></li>
+                        <li class="mb-2"><a href="kamar.html" class="text-white">Kamar</a></li>
+                        <li class="mb-2"><a href="fasilitas.html" class="text-white">Fasilitas</a></li>
+                        <li class="mb-2"><a href="galeri.html" class="text-white">Galeri</a></li>
+                        <li><a href="kontak.html" class="text-white">Kontak</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="mb-4">Kontak Kami</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-3">
+                            <i class="fas fa-map-marker-alt me-2"></i>
+                            Jl. Contoh No. 123, Kota Anda
+                        </li>
+                        <li class="mb-3">
+                            <i class="fas fa-phone-alt me-2"></i>
+                            (021) 1234-5678
+                        </li>
+                        <li class="mb-3">
+                            <i class="fas fa-envelope me-2"></i>
+                            info@hotelkami.com
+                        </li>
+                        <li>
+                            <i class="fas fa-clock me-2"></i>
+                            24 Jam
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h5 class="mb-4">Newsletter</h5>
+                    <p>Berlangganan newsletter kami untuk mendapatkan penawaran spesial.</p>
+                    <form class="mt-3">
+                        <div class="input-group mb-3">
+                            <input type="email" class="form-control" placeholder="Email Anda" required>
+                            <button class="btn btn-primary" type="submit">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <hr class="my-4 bg-light">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2023 Hotel Kami. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item"><a href="#" class="text-white">Privacy Policy</a></li>
+                        <li class="list-inline-item"><a href="#" class="text-white">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="btn btn-primary back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Lightbox JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="assets/js/main.js"></script>
+    
+    <!-- Galeri JS -->
+    <script src="assets/js/galeri.js"></script>
+</body>
+</html>
