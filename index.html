@@ -3,352 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hotel Kami - Pilih Kamar</title>
+    <meta name="description" content="Hotel bintang 4 dengan fasilitas lengkap dan pelayanan terbaik di kota">
+    <title>Andrea Hotel - Penginapan Nyaman & Mewah</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #4CAF50;
-            --accent-color: #3498db;
-            --light-color: #f5f5f5;
-            --dark-color: #333;
-            --white: #fff;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: var(--light-color);
-            color: var(--dark-color);
-        }
-        
-        /* Navigation Styles */
-        header {
-            background-color: var(--primary-color);
-            color: var(--white);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: var(--shadow);
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 5%;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .logo i {
-            color: var(--secondary-color);
-            font-size: 1.8rem;
-        }
-        
-        .logo h1 {
-            margin: 0;
-            font-size: 1.8rem;
-            color: var(--white);
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            gap: 1.5rem;
-        }
-        
-        .nav-links li a {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s;
-            padding: 0.5rem 0;
-            position: relative;
-        }
-        
-        .nav-links li a:hover,
-        .nav-links li a.active {
-            color: var(--secondary-color);
-        }
-        
-        .nav-links li a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            background: var(--secondary-color);
-            bottom: 0;
-            left: 0;
-            transition: width 0.3s;
-        }
-        
-        .nav-links li a:hover::after,
-        .nav-links li a.active::after {
-            width: 100%;
-        }
-        
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--white);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-        
-        /* Room Section */
-        .room-section {
-            padding: 3rem 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-            color: var(--primary-color);
-        }
-        
-        .room-card {
-            border: none;
-            border-radius: 10px;
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-            height: 100%;
-            margin-bottom: 2rem;
-        }
-        
-        .room-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-        
-        .card-img-top {
-            height: 250px;
-            object-fit: cover;
-            width: 100%;
-        }
-        
-        .card-title {
-            color: var(--primary-color);
-            font-weight: 600;
-            margin-top: 1rem;
-        }
-        
-        .room-features {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .room-features li {
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-        }
-        
-        .room-features i {
-            color: var(--secondary-color);
-            width: 20px;
-            text-align: center;
-            margin-right: 8px;
-        }
-        
-        .room-price {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: var(--primary-color);
-            margin: 1rem 0;
-        }
-        
-        .btn-primary {
-            background-color: var(--accent-color);
-            border: none;
-            width: 100%;
-            padding: 0.75rem;
-            font-weight: 500;
-        }
-        
-        .btn-primary:hover {
-            background-color: #2980b9;
-        }
-        
-        .btn-success {
-            background-color: var(--secondary-color);
-        }
-        
-        /* Reservation Form */
-        .reservation-form {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-            margin-top: 3rem;
-        }
-        
-        .form-label {
-            font-weight: 500;
-            color: var(--primary-color);
-        }
-        
-        .form-control {
-            margin-bottom: 1rem;
-        }
-        
-        /* Payment System Styles */
-        .payment-container {
-            margin: 25px 0;
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 8px;
-            border: 1px solid #dee2e6;
-        }
-        
-        .payment-option {
-            margin: 15px 0;
-            padding: 12px;
-            background: white;
-            border-radius: 6px;
-            border: 1px solid #ddd;
-        }
-        
-        .payment-option label {
-            margin-left: 10px;
-            font-weight: 600;
-            cursor: pointer;
-        }
-        
-        .bank-details, .ewallet-details {
-            margin: 10px 0 0 25px;
-            display: none;
-        }
-        
-        input[type="radio"]:checked ~ .bank-details,
-        input[type="radio"]:checked ~ .ewallet-details {
-            display: block;
-        }
-        
-        .payment-instruction {
-            margin-top: 20px;
-            padding: 15px;
-            background: #e7f5ff;
-            border-left: 4px solid #228be6;
-            border-radius: 4px;
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--primary-color);
-            color: var(--white);
-            padding: 2rem 0;
-            margin-top: 3rem;
-            text-align: center;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background: var(--primary-color);
-                padding: 1rem 0;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            }
-            
-            .nav-links.active {
-                display: flex;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .card-img-top {
-                height: 200px;
-            }
-        }
-    </style>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<script>
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const name = document.getElementById('name').value;
-        alert(`Thank you, ${name}! We'll contact you shortly.`);
-        this.reset();
-    });
-</script>
 <body>
-    <header>
-        <nav>
-            <div class="logo">
-                <i class="fas fa-hotel"></i>
-                <h1>Hotel Kami</h1>
-            </div>
-            
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-            </button>
-            
-            <ul class="nav-links" id="navLinks">
-                <li><a href="index.html"><i class="fas fa-home"></i> Beranda</a></li>
-                <li><a href="pilihkamar.html" class="active"><i class="fas fa-bed"></i> Pilih Kamar</a></li>
-                <li><a href="fasilitas.html"><i class="fas fa-swimming-pool"></i> Fasilitas</a></li>
-                <li><a href="kontak.html"><i class="fas fa-envelope"></i> Kontak</a></li>
-                <li><a href="#" id="loginBtn"><i class="fas fa-sign-in-alt"></i> Login</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <header>
-        <nav>
-            <ul style="display: flex; gap: 20px; list-style: none; padding: 1rem;">
-                <li><a href="#rooms" style="color: white; text-decoration: none;">Rooms</a></li>
-                <li><a href="#amenities" style="color: white; text-decoration: none;">Amenities</a></li>
-                <li><a href="#contact" style="color: white; text-decoration: none;">Contact</a></li>
-            </ul>
-        </nav>
-        <!-- Rest of hero content -->
-    </header>
-
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <!-- Header/Navbar -->
+    <header class="main-header">
+        <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container">
-                <!-- Logo with hotel icon -->
                 <a class="navbar-brand" href="index.html">
                     <i class="fas fa-hotel me-2"></i>
-                    <span class="fw-bold">Hotel Grand Luxury</span>
+                    <span>Andrea Hotel</span>
                 </a>
                 
-                <!-- Mobile menu button -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 
-                <!-- Navigation links -->
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html">
+                            <a class="nav-link active" href="index.html">
                                 <i class="fas fa-home me-1"></i> Beranda
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="kamar.html">
-                                <i class="fas fa-bed me-1"></i> Kamar & Suite
+                            <a class="nav-link" href="kamar.html">
+                                <i class="fas fa-bed me-1"></i> Kamar
                             </a>
                         </li>
                         <li class="nav-item">
@@ -357,8 +50,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="reservasi.html">
-                                <i class="fas fa-calendar-check me-1"></i> Reservasi
+                            <a class="nav-link" href="galeri.html">
+                                <i class="fas fa-images me-1"></i> Galeri
                             </a>
                         </li>
                         <li class="nav-item">
@@ -366,9 +59,9 @@
                                 <i class="fas fa-envelope me-1"></i> Kontak
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link btn btn-primary ms-2 text-white" href="reservasi.html">
-                                <i class="fas fa-bookmark me-1"></i> Pesan Sekarang
+                        <li class="nav-item ms-lg-3">
+                            <a class="btn btn-primary" href="reservasi.html">
+                                <i class="fas fa-bookmark me-1"></i> Reservasi
                             </a>
                         </li>
                     </ul>
@@ -376,343 +69,382 @@
             </div>
         </nav>
     </header>
-    
-    <section class="room-section">
-        <div class="container">
-            <h2 class="section-title">Pilihan Kamar</h2>
-            <div class="row" id="room-list">
-                <!-- Room cards will be loaded here by JavaScript -->
-            </div>
-            
-            <div class="reservation-form" id="reservation-form">
-                <h3 class="text-center mb-4">Form Reservasi</h3>
-                <form id="bookingForm">
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Nama Lengkap</label>
-                        <input type="text" class="form-control" id="name" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="phone" class="form-label">Nomor Telepon</label>
-                        <input type="tel" class="form-control" id="phone" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="room" class="form-label">Pilih Kamar</label>
-                        <select class="form-select" id="room" required>
-                            <option value="">Pilih Kamar</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="checkin" class="form-label">Tanggal Check-in</label>
-                        <input type="date" class="form-control" id="checkin" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="checkout" class="form-label">Tanggal Check-out</label>
-                        <input type="date" class="form-control" id="checkout" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="guests" class="form-label">Jumlah Tamu</label>
-                        <input type="number" class="form-control" id="guests" min="1" required>
-                    </div>
-                    
-                    <!-- Payment System Section -->
-                    <div class="payment-container">
-                        <h3>Pilihan Pembayaran</h3>
-                        
-                        <div class="payment-option">
-                            <input type="radio" id="bankTransfer" name="payment" value="bank" checked>
-                            <label for="bankTransfer">Transfer Bank</label>
-                            
-                            <div class="bank-details">
-                                <select class="form-select" id="bankSelect">
-                                    <option value="bca">BCA - 123 456 7890</option>
-                                    <option value="bni">BNI - 987 654 3210</option>
-                                    <option value="mandiri">Mandiri - 111 222 3333</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <div class="payment-option">
-                            <input type="radio" id="ewallet" name="payment" value="ewallet">
-                            <label for="ewallet">E-Wallet</label>
-                            
-                            <div class="ewallet-details">
-                                <select class="form-select" id="ewalletSelect">
-                                    <option value="gopay">GoPay</option>
-                                    <option value="ovo">OVO</option>
-                                    <option value="dana">DANA</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <div class="payment-instruction">
-                            <p id="paymentInfo">Silakan transfer ke BCA 123 456 7890</p>
-                        </div>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary mt-3">Pesan Sekarang</button>
-                </form>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12 text-center text-white">
+                    <h1 class="display-4 fw-bold mb-4">Selamat Datang di Andrea Hotel</h1>
+                    <p class="lead mb-5">Pengalaman menginap yang tak terlupakan dengan kenyamanan terbaik</p>
+                    <a href="kamar.html" class="btn btn-primary btn-lg px-4 me-2">
+                        <i class="fas fa-bed me-1"></i> Lihat Kamar
+                    </a>
+                    <a href="reservasi.html" class="btn btn-outline-light btn-lg px-4">
+                        <i class="fas fa-calendar-check me-1"></i> Reservasi Sekarang
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer>
-        <p>&copy; 2023 Hotel Kami. Semua hak dilindungi.</p>
-    </footer>
-
-    <footer style="background: #333; color: white; text-align: center; padding: 2rem;">
-        <p>&copy; 2023 BelajarHotel. All rights reserved.</p>
-    </footer>
-
-    <script>
-        // Data kamar
-        const rooms = [
-            { 
-                id: 1, 
-                name: "Kamar Standar", 
-                price: 350000, 
-                size: "20m²", 
-                capacity: 2, 
-                breakfast: false,
-                features: [
-                    "Wi-Fi Gratis",
-                    "TV 32\"",
-                    "Tempat tidur queen size",
-                    "Kamar mandi pribadi",
-                    "AC"
-                ],
-                image: "img/kamar-standar.jpg"
-            },
-            { 
-                id: 2, 
-                name: "Kamar Deluxe", 
-                price: 550000, 
-                size: "30m²", 
-                capacity: 2, 
-                breakfast: true,
-                features: [
-                    "Wi-Fi Gratis",
-                    "TV 42\"",
-                    "Tempat tidur king size",
-                    "Kamar mandi dengan bathtub",
-                    "Minibar",
-                    "Sarapan gratis"
-                ],
-                image: "img/kamar-deluxe.jpg"
-            },
-            { 
-                id: 3, 
-                name: "Suite", 
-                price: 1200000, 
-                size: "50m²", 
-                capacity: 4, 
-                breakfast: true,
-                features: [
-                    "Wi-Fi Gratis",
-                    "TV 55\"",
-                    "Tempat tidur king size",
-                    "Ruang tamu terpisah",
-                    "Balkon pribadi",
-                    "Minibar lengkap",
-                    "Sarapan gratis"
-                ],
-                image: "img/kamar-suite.jpg"
-            }
-        ];
-
-        // Fungsi untuk menampilkan kamar
-        function loadRooms() {
-            const roomList = document.getElementById('room-list');
-            const roomSelect = document.getElementById('room');
-            
-            roomList.innerHTML = '';
-            roomSelect.innerHTML = '<option value="">Pilih Kamar</option>';
-
-            rooms.forEach(room => {
-                // Tampilkan kartu kamar
-                const roomElement = document.createElement('div');
-                roomElement.className = 'col-md-4';
-                roomElement.innerHTML = `
-                    <div class="card room-card">
-                        <img src="${room.image}" class="card-img-top" alt="${room.name}">
-                        <div class="card-body">
-                            <h3 class="card-title">${room.name}</h3>
-                            <ul class="room-features">
-                                ${room.features.map(feature => `<li><i class="fas fa-check"></i> ${feature}</li>`).join('')}
-                            </ul>
-                            <div class="room-price">Rp ${room.price.toLocaleString('id-ID')}/malam</div>
-                            <button class="btn btn-primary" onclick="selectRoom(${room.id})">Pilih Kamar</button>
+    <!-- About Section -->
+    <section class="about-section py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h2 class="section-title mb-4">Tentang Kami</h2>
+                    <p class="lead">Andrea Hotel merupakan akomodasi bintang 4 yang menyediakan pengalaman menginap terbaik dengan pelayanan istimewa.</p>
+                    <p>Dengan lokasi strategis di pusat kota, kami menawarkan berbagai fasilitas lengkap untuk memenuhi kebutuhan bisnis maupun liburan Anda.</p>
+                    <div class="d-flex align-items-center mt-4">
+                        <div class="me-4">
+                            <i class="fas fa-concierge-bell fa-2x text-primary"></i>
+                            <h5 class="mt-2">Pelayanan 24 Jam</h5>
+                        </div>
+                        <div class="me-4">
+                            <i class="fas fa-wifi fa-2x text-primary"></i>
+                            <h5 class="mt-2">WiFi Gratis</h5>
+                        </div>
+                        <div>
+                            <i class="fas fa-parking fa-2x text-primary"></i>
+                            <h5 class="mt-2">Parkir Luas</h5>
                         </div>
                     </div>
-                `;
-                roomList.appendChild(roomElement);
+                </div>
+                <div class="col-lg-6">
+                    <div class="about-image-container">
+                        <img src="assets/images/hotel-lobby.jpg" alt="Lobby Andrea Hotel" class="img-fluid rounded shadow">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                // Tambahkan ke dropdown
-                const option = document.createElement('option');
-                option.value = room.id;
-                option.textContent = `${room.name} - Rp ${room.price.toLocaleString('id-ID')}`;
-                roomSelect.appendChild(option);
-            });
-        }
-
-        // Fungsi untuk memilih kamar
-        function selectRoom(roomId) {
-            const selectedRoom = rooms.find(room => room.id === roomId);
-            if (selectedRoom) {
-                localStorage.setItem('selectedRoom', JSON.stringify(selectedRoom));
+    <!-- Room Preview Section -->
+    <section class="room-section py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Pilihan Kamar Kami</h2>
+                <p class="lead">Temukan kamar yang sesuai dengan kebutuhan Anda</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card room-card h-100 border-0 shadow-sm">
+                        <img src="assets/images/kamar-standar.jpg" class="card-img-top" alt="Kamar Standar">
+                        <div class="card-body">
+                            <h3 class="card-title">Kamar Standar</h3>
+                            <ul class="room-features list-unstyled">
+                                <li><i class="fas fa-check text-success me-2"></i> Ukuran: 20m²</li>
+                                <li><i class="fas fa-check text-success me-2"></i> Untuk 2 orang</li>
+                                <li><i class="fas fa-check text-success me-2"></i> TV 32"</li>
+                                <li><i class="fas fa-check text-success me-2"></i> AC</li>
+                                <li><i class="fas fa-check text-success me-2"></i> WiFi gratis</li>
+                            </ul>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <div class="room-price">
+                                    <span class="text-muted">Mulai dari</span>
+                                    <h4 class="mb-0">Rp 350.000</h4>
+                                    <small class="text-muted">per malam</small>
+                                </div>
+                                <a href="kamar.html#standar" class="btn btn-primary">Detail</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 
-                // Animasi feedback
-                const buttons = document.querySelectorAll('.btn-primary');
-                buttons.forEach(button => {
-                    button.disabled = true;
-                    if (button.textContent.includes(selectedRoom.name)) {
-                        button.innerHTML = '<i class="fas fa-check-circle"></i> Kamar Dipilih';
-                        button.classList.remove('btn-primary');
-                        button.classList.add('btn-success');
-                    } else {
-                        button.style.opacity = '0.6';
-                    }
-                });
+                <div class="col-md-4">
+                    <div class="card room-card h-100 border-0 shadow-sm">
+                        <img src="assets/images/kamar-deluxe.jpg" class="card-img-top" alt="Kamar Deluxe">
+                        <div class="card-body">
+                            <h3 class="card-title">Kamar Deluxe</h3>
+                            <ul class="room-features list-unstyled">
+                                <li><i class="fas fa-check text-success me-2"></i> Ukuran: 30m²</li>
+                                <li><i class="fas fa-check text-success me-2"></i> Untuk 2 orang</li>
+                                <li><i class="fas fa-check text-success me-2"></i> TV 42"</li>
+                                <li><i class="fas fa-check text-success me-2"></i> Minibar</li>
+                                <li><i class="fas fa-check text-success me-2"></i> Sarapan gratis</li>
+                            </ul>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <div class="room-price">
+                                    <span class="text-muted">Mulai dari</span>
+                                    <h4 class="mb-0">Rp 550.000</h4>
+                                    <small class="text-muted">per malam</small>
+                                </div>
+                                <a href="kamar.html#deluxe" class="btn btn-primary">Detail</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 
-                // Scroll ke form reservasi
-                document.getElementById('reservation-form').scrollIntoView({ behavior: 'smooth' });
-                document.getElementById('room').value = roomId;
-            }
-        }
-
-        // Fungsi untuk mengupdate instruksi pembayaran
-        function updatePaymentInfo() {
-            const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
-            const paymentInfo = document.getElementById('paymentInfo');
+                <div class="col-md-4">
+                    <div class="card room-card h-100 border-0 shadow-sm">
+                        <img src="assets/images/kamar-suite.jpg" class="card-img-top" alt="Suite">
+                        <div class="card-body">
+                            <h3 class="card-title">Suite</h3>
+                            <ul class="room-features list-unstyled">
+                                <li><i class="fas fa-check text-success me-2"></i> Ukuran: 50m²</li>
+                                <li><i class="fas fa-check text-success me-2"></i> Untuk 4 orang</li>
+                                <li><i class="fas fa-check text-success me-2"></i> TV 55"</li>
+                                <li><i class="fas fa-check text-success me-2"></i> Balkon pribadi</li>
+                                <li><i class="fas fa-check text-success me-2"></i> Ruang tamu terpisah</li>
+                            </ul>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <div class="room-price">
+                                    <span class="text-muted">Mulai dari</span>
+                                    <h4 class="mb-0">Rp 1.200.000</h4>
+                                    <small class="text-muted">per malam</small>
+                                </div>
+                                <a href="kamar.html#suite" class="btn btn-primary">Detail</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             
-            if (paymentMethod === 'bank') {
-                const bank = document.getElementById('bankSelect').value;
-                const bankAccounts = {
-                    'bca': 'BCA 123 456 7890 a/n Hotel Kami',
-                    'bni': 'BNI 987 654 3210 a/n Hotel Kami',
-                    'mandiri': 'Mandiri 111 222 3333 a/n Hotel Kami'
-                };
-                paymentInfo.textContent = `Silakan transfer ke rekening ${bankAccounts[bank]}`;
-            } else {
-                const ewallet = document.getElementById('ewalletSelect').value;
-                paymentInfo.textContent = `Silakan lanjutkan pembayaran via ${ewallet.charAt(0).toUpperCase() + ewallet.slice(1)} di aplikasi Anda`;
-            }
-        }
+            <div class="text-center mt-5">
+                <a href="kamar.html" class="btn btn-outline-primary btn-lg">
+                    <i class="fas fa-bed me-2"></i> Lihat Semua Kamar
+                </a>
+            </div>
+        </div>
+    </section>
 
-        // Fungsi untuk menangani form reservasi
-        document.getElementById('bookingForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            const roomId = document.getElementById('room').value;
-            const checkin = document.getElementById('checkin').value;
-            const checkout = document.getElementById('checkout').value;
-            const guests = document.getElementById('guests').value;
-            const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
-            const paymentDetail = paymentMethod === 'bank' 
-                ? document.getElementById('bankSelect').options[document.getElementById('bankSelect').selectedIndex].text 
-                : document.getElementById('ewalletSelect').options[document.getElementById('ewalletSelect').selectedIndex].text;
-
-            if (!name || !email || !phone || !roomId || !checkin || !checkout || !guests) {
-                alert('Harap lengkapi semua field!');
-                return;
-            }
-
-            const selectedRoom = rooms.find(room => room.id === parseInt(roomId));
+    <!-- Facilities Section -->
+    <section class="facilities-section py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Fasilitas Kami</h2>
+                <p class="lead">Nikmati berbagai fasilitas penunjang kenyamanan Anda</p>
+            </div>
             
-            // Hitung total harga
-            const checkinDate = new Date(checkin);
-            const checkoutDate = new Date(checkout);
-            const nights = Math.ceil((checkoutDate - checkinDate) / (1000 * 60 * 60 * 24));
-            const totalPrice = selectedRoom.price * nights;
-            
-            // Simulasi pengiriman data
-            setTimeout(() => {
-                const confirmationId = 'RSV-' + Math.floor(Math.random() * 1000000);
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="facility-card text-center p-4">
+                        <div class="facility-icon mb-3">
+                            <i class="fas fa-utensils fa-3x text-primary"></i>
+                        </div>
+                        <h4>Restoran</h4>
+                        <p>Restoran mewah dengan berbagai menu lokal dan internasional</p>
+                    </div>
+                </div>
                 
-                const confirmationMessage = `
-                    Reservasi Berhasil!
-                    
-                    Detail Reservasi:
-                    Nama: ${name}
-                    Email: ${email}
-                    Telepon: ${phone}
-                    Kamar: ${selectedRoom.name}
-                    Harga per malam: Rp ${selectedRoom.price.toLocaleString('id-ID')}
-                    Jumlah malam: ${nights}
-                    Total Harga: Rp ${totalPrice.toLocaleString('id-ID')}
-                    Check-in: ${checkin}
-                    Check-out: ${checkout}
-                    Jumlah Tamu: ${guests}
-                    Metode Pembayaran: ${paymentMethod === 'bank' ? 'Transfer Bank' : 'E-Wallet'}
-                    Detail Pembayaran: ${paymentDetail}
-                    
-                    ID Konfirmasi: ${confirmationId}
-                    
-                    Silakan cek email Anda untuk detail lebih lanjut.
-                `;
+                <div class="col-md-4">
+                    <div class="facility-card text-center p-4">
+                        <div class="facility-icon mb-3">
+                            <i class="fas fa-swimming-pool fa-3x text-primary"></i>
+                        </div>
+                        <h4>Kolam Renang</h4>
+                        <p>Kolam renang outdoor dengan area bersantai yang nyaman</p>
+                    </div>
+                </div>
                 
-                alert(confirmationMessage);
+                <div class="col-md-4">
+                    <div class="facility-card text-center p-4">
+                        <div class="facility-icon mb-3">
+                            <i class="fas fa-spa fa-3x text-primary"></i>
+                        </div>
+                        <h4>Spa & Wellness</h4>
+                        <p>Layanan spa profesional untuk relaksasi maksimal</p>
+                    </div>
+                </div>
                 
-                // Reset form
-                this.reset();
-                localStorage.removeItem('selectedRoom');
-                loadRooms(); // Reset tampilan kamar
-            }, 1000);
-        });
+                <div class="col-md-4">
+                    <div class="facility-card text-center p-4">
+                        <div class="facility-icon mb-3">
+                            <i class="fas fa-dumbbell fa-3x text-primary"></i>
+                        </div>
+                        <h4>Fitness Center</h4>
+                        <p>Peralatan fitness lengkap untuk menjaga kebugaran</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="facility-card text-center p-4">
+                        <div class="facility-icon mb-3">
+                            <i class="fas fa-wifi fa-3x text-primary"></i>
+                        </div>
+                        <h4>WiFi Cepat</h4>
+                        <p>Koneksi internet berkecepatan tinggi di seluruh area hotel</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="facility-card text-center p-4">
+                        <div class="facility-icon mb-3">
+                            <i class="fas fa-business-time fa-3x text-primary"></i>
+                        </div>
+                        <h4>Ruang Meeting</h4>
+                        <p>Fasilitas meeting lengkap untuk kebutuhan bisnis Anda</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        // Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navLinks = document.getElementById('navLinks');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            const icon = mobileMenuBtn.querySelector('i');
-            if (navLinks.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
-        });
+    <!-- Testimonial Section -->
+    <section class="testimonial-section py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Apa Kata Tamu Kami</h2>
+                <p class="lead">Pengalaman nyata dari tamu yang pernah menginap</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="testimonial-card text-center p-4">
+                                    <div class="testimonial-rating mb-3">
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                    </div>
+                                    <p class="testimonial-text mb-4">"Pelayanan sangat memuaskan! Kamar bersih dan nyaman, lokasi strategis dekat dengan pusat perbelanjaan. Pasti akan kembali lagi."</p>
+                                    <div class="testimonial-author">
+                                        <img src="assets/images/testimonial-1.jpg" alt="Budi Santoso" class="rounded-circle mb-2" width="60">
+                                        <h5 class="mb-1">Budi Santoso</h5>
+                                        <small class="text-muted">Business Traveler</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="testimonial-card text-center p-4">
+                                    <div class="testimonial-rating mb-3">
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star-half-alt text-warning"></i>
+                                    </div>
+                                    <p class="testimonial-text mb-4">"Suasana hotel sangat nyaman untuk keluarga. Anak-anak senang dengan kolam renangnya. Sarapannya juga lengkap dan enak."</p>
+                                    <div class="testimonial-author">
+                                        <img src="assets/images/testimonial-2.jpg" alt="Dewi Lestari" class="rounded-circle mb-2" width="60">
+                                        <h5 class="mb-1">Dewi Lestari</h5>
+                                        <small class="text-muted">Family Vacation</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        // Setup payment method listeners
-        function setupPaymentListeners() {
-            document.querySelectorAll('input[name="payment"]').forEach(radio => {
-                radio.addEventListener('change', updatePaymentInfo);
-            });
-            
-            document.getElementById('bankSelect').addEventListener('change', function() {
-                if (document.getElementById('bankTransfer').checked) {
-                    updatePaymentInfo();
-                }
-            });
-            
-            document.getElementById('ewalletSelect').addEventListener('change', function() {
-                if (document.getElementById('ewallet').checked) {
-                    updatePaymentInfo();
-                }
-            });
-        }
+    <!-- CTA Section -->
+    <section class="cta-section py-5 text-white" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('assets/images/cta-bg.jpg') center/cover no-repeat;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8 mb-4 mb-lg-0">
+                    <h2 class="mb-3">Siap Menginap di Andrea Hotel?</h2>
+                    <p class="lead mb-0">Pesan sekarang dan dapatkan pengalaman menginap terbaik dengan harga spesial!</p>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <a href="reservasi.html" class="btn btn-primary btn-lg px-4">
+                        <i class="fas fa-calendar-check me-2"></i> Reservasi Sekarang
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        // Panggil saat halaman dimuat
-        window.onload = function() {
-            loadRooms();
-            setupPaymentListeners();
-            
-            // Tampilkan kamar yang dipilih sebelumnya
-            const savedRoom = localStorage.getItem('selectedRoom');
-            if (savedRoom) {
-                const room = JSON.parse(savedRoom);
-                selectRoom(room.id);
-            }
-        };
-    </script>
+    <!-- Footer -->
+    <footer class="footer py-5 bg-dark text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h5 class="mb-4">
+                        <i class="fas fa-hotel me-2"></i> Andrea Hotel
+                    </h5>
+                    <p>Hotel bintang 4 dengan fasilitas lengkap dan pelayanan terbaik di kota. Memberikan pengalaman menginap yang tak terlupakan.</p>
+                    <div class="social-links mt-4">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-youtube fa-lg"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                    <h5 class="mb-4">Tautan Cepat</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="index.html" class="text-white">Beranda</a></li>
+                        <li class="mb-2"><a href="kamar.html" class="text-white">Kamar</a></li>
+                        <li class="mb-2"><a href="fasilitas.html" class="text-white">Fasilitas</a></li>
+                        <li class="mb-2"><a href="galeri.html" class="text-white">Galeri</a></li>
+                        <li><a href="kontak.html" class="text-white">Kontak</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="mb-4">Kontak Kami</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-3">
+                            <i class="fas fa-map-marker-alt me-2"></i>
+                            Jl. Contoh No. 123, Kota Anda
+                        </li>
+                        <li class="mb-3">
+                            <i class="fas fa-phone-alt me-2"></i>
+                            (021) 1234-5678
+                        </li>
+                        <li class="mb-3">
+                            <i class="fas fa-envelope me-2"></i>
+                            info@andreahotel.com
+                        </li>
+                        <li>
+                            <i class="fas fa-clock me-2"></i>
+                            24 Jam
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h5 class="mb-4">Newsletter</h5>
+                    <p>Berlangganan newsletter kami untuk mendapatkan penawaran spesial.</p>
+                    <form class="mt-3">
+                        <div class="input-group mb-3">
+                            <input type="email" class="form-control" placeholder="Email Anda" required>
+                            <button class="btn btn-primary" type="submit">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <hr class="my-4 bg-light">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2023 Andrea Hotel. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item"><a href="#" class="text-white">Privacy Policy</a></li>
+                        <li class="list-inline-item"><a href="#" class="text-white">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="btn btn-primary back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="assets/js/main.js"></script>
 </body>
 </html>
