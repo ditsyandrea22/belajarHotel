@@ -205,6 +205,47 @@
             margin-bottom: 1rem;
         }
         
+        /* Payment System Styles */
+        .payment-container {
+            margin: 25px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+        }
+        
+        .payment-option {
+            margin: 15px 0;
+            padding: 12px;
+            background: white;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+        }
+        
+        .payment-option label {
+            margin-left: 10px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        .bank-details, .ewallet-details {
+            margin: 10px 0 0 25px;
+            display: none;
+        }
+        
+        input[type="radio"]:checked ~ .bank-details,
+        input[type="radio"]:checked ~ .ewallet-details {
+            display: block;
+        }
+        
+        .payment-instruction {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e7f5ff;
+            border-left: 4px solid #228be6;
+            border-radius: 4px;
+        }
+        
         /* Footer */
         footer {
             background: var(--primary-color);
@@ -304,7 +345,43 @@
                         <label for="guests" class="form-label">Jumlah Tamu</label>
                         <input type="number" class="form-control" id="guests" min="1" required>
                     </div>
-                    <button type="submit" class="btn btn-primary">Pesan Sekarang</button>
+                    
+                    <!-- Payment System Section -->
+                    <div class="payment-container">
+                        <h3>Pilihan Pembayaran</h3>
+                        
+                        <div class="payment-option">
+                            <input type="radio" id="bankTransfer" name="payment" value="bank" checked>
+                            <label for="bankTransfer">Transfer Bank</label>
+                            
+                            <div class="bank-details">
+                                <select class="form-select" id="bankSelect">
+                                    <option value="bca">BCA - 123 456 7890</option>
+                                    <option value="bni">BNI - 987 654 3210</option>
+                                    <option value="mandiri">Mandiri - 111 222 3333</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="payment-option">
+                            <input type="radio" id="ewallet" name="payment" value="ewallet">
+                            <label for="ewallet">E-Wallet</label>
+                            
+                            <div class="ewallet-details">
+                                <select class="form-select" id="ewalletSelect">
+                                    <option value="gopay">GoPay</option>
+                                    <option value="ovo">OVO</option>
+                                    <option value="dana">DANA</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="payment-instruction">
+                            <p id="paymentInfo">Silakan transfer ke BCA 123 456 7890</p>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary mt-3">Pesan Sekarang</button>
                 </form>
             </div>
         </div>
@@ -430,6 +507,25 @@
             }
         }
 
+        // Fungsi untuk mengupdate instruksi pembayaran
+        function updatePaymentInfo() {
+            const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
+            const paymentInfo = document.getElementById('paymentInfo');
+            
+            if (paymentMethod === 'bank') {
+                const bank = document.getElementById('bankSelect').value;
+                const bankAccounts = {
+                    'bca': 'BCA 123 456 7890 a/n Hotel Kami',
+                    'bni': 'BNI 987 654 3210 a/n Hotel Kami',
+                    'mandiri': 'Mandiri 111 222 3333 a/n Hotel Kami'
+                };
+                paymentInfo.textContent = `Silakan transfer ke rekening ${bankAccounts[bank]}`;
+            } else {
+                const ewallet = document.getElementById('ewalletSelect').value;
+                paymentInfo.textContent = `Silakan lanjutkan pembayaran via ${ewallet.charAt(0).toUpperCase() + ewallet.slice(1)} di aplikasi Anda`;
+            }
+        }
+
         // Fungsi untuk menangani form reservasi
         document.getElementById('bookingForm').addEventListener('submit', function(event) {
             event.preventDefault();
@@ -441,6 +537,10 @@
             const checkin = document.getElementById('checkin').value;
             const checkout = document.getElementById('checkout').value;
             const guests = document.getElementById('guests').value;
+            const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
+            const paymentDetail = paymentMethod === 'bank' 
+                ? document.getElementById('bankSelect').options[document.getElementById('bankSelect').selectedIndex].text 
+                : document.getElementById('ewalletSelect').options[document.getElementById('ewalletSelect').selectedIndex].text;
 
             if (!name || !email || !phone || !roomId || !checkin || !checkout || !guests) {
                 alert('Harap lengkapi semua field!');
@@ -448,6 +548,12 @@
             }
 
             const selectedRoom = rooms.find(room => room.id === parseInt(roomId));
+            
+            // Hitung total harga
+            const checkinDate = new Date(checkin);
+            const checkoutDate = new Date(checkout);
+            const nights = Math.ceil((checkoutDate - checkinDate) / (1000 * 60 * 60 * 24));
+            const totalPrice = selectedRoom.price * nights;
             
             // Simulasi pengiriman data
             setTimeout(() => {
@@ -461,10 +567,14 @@
                     Email: ${email}
                     Telepon: ${phone}
                     Kamar: ${selectedRoom.name}
-                    Harga: Rp ${selectedRoom.price.toLocaleString('id-ID')}/malam
+                    Harga per malam: Rp ${selectedRoom.price.toLocaleString('id-ID')}
+                    Jumlah malam: ${nights}
+                    Total Harga: Rp ${totalPrice.toLocaleString('id-ID')}
                     Check-in: ${checkin}
                     Check-out: ${checkout}
                     Jumlah Tamu: ${guests}
+                    Metode Pembayaran: ${paymentMethod === 'bank' ? 'Transfer Bank' : 'E-Wallet'}
+                    Detail Pembayaran: ${paymentDetail}
                     
                     ID Konfirmasi: ${confirmationId}
                     
@@ -475,6 +585,8 @@
                 
                 // Reset form
                 this.reset();
+                localStorage.removeItem('selectedRoom');
+                loadRooms(); // Reset tampilan kamar
             }, 1000);
         });
 
@@ -494,9 +606,29 @@
             }
         });
 
+        // Setup payment method listeners
+        function setupPaymentListeners() {
+            document.querySelectorAll('input[name="payment"]').forEach(radio => {
+                radio.addEventListener('change', updatePaymentInfo);
+            });
+            
+            document.getElementById('bankSelect').addEventListener('change', function() {
+                if (document.getElementById('bankTransfer').checked) {
+                    updatePaymentInfo();
+                }
+            });
+            
+            document.getElementById('ewalletSelect').addEventListener('change', function() {
+                if (document.getElementById('ewallet').checked) {
+                    updatePaymentInfo();
+                }
+            });
+        }
+
         // Panggil saat halaman dimuat
         window.onload = function() {
             loadRooms();
+            setupPaymentListeners();
             
             // Tampilkan kamar yang dipilih sebelumnya
             const savedRoom = localStorage.getItem('selectedRoom');

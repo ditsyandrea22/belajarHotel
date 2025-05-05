@@ -112,3 +112,41 @@ window.onload = function() {
         document.getElementById('room').value = room.id;
     }
 };
+
+// Payment System Functionality
+function setupPaymentSystem() {
+    const paymentMethod = document.querySelectorAll('input[name="payment"]');
+    const bankSelect = document.getElementById('bankSelect');
+    const ewalletSelect = document.getElementById('ewalletSelect');
+    const paymentInfo = document.getElementById('paymentInfo');
+    
+    function updatePaymentInfo() {
+      const method = document.querySelector('input[name="payment"]:checked').value;
+      
+      if (method === 'bank') {
+        const bank = bankSelect.value;
+        const accounts = {
+          'bca': 'BCA 123 456 7890',
+          'bni': 'BNI 987 654 3210',
+          'mandiri': 'Mandiri 111 222 3333'
+        };
+        paymentInfo.textContent = `Silakan transfer ke ${accounts[bank]}`;
+      } else {
+        const wallet = ewalletSelect.value;
+        paymentInfo.textContent = `Silakan bayar via ${wallet} di aplikasi Anda`;
+      }
+    }
+    
+    paymentMethod.forEach(radio => {
+      radio.addEventListener('change', updatePaymentInfo);
+    });
+    
+    bankSelect.addEventListener('change', updatePaymentInfo);
+    ewalletSelect.addEventListener('change', updatePaymentInfo);
+    
+    // Initialize
+    updatePaymentInfo();
+  }
+  
+  // Call the function when page loads
+  window.addEventListener('DOMContentLoaded', setupPaymentSystem);

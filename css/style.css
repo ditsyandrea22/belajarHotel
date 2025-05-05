@@ -161,3 +161,41 @@ body {
         width: 100%;
     }
 }
+
+/* Payment System Styles */
+.payment-container {
+    margin: 20px 0;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+  }
+  
+  .payment-option {
+    margin: 10px 0;
+    padding: 10px;
+    background: white;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+  }
+  
+  .payment-option label {
+    margin-left: 8px;
+    font-weight: 600;
+  }
+  
+  .bank-details, .ewallet-details {
+    margin: 10px 0 0 20px;
+    display: none;
+  }
+  
+  input[type="radio"]:checked ~ .bank-details,
+  input[type="radio"]:checked ~ .ewallet-details {
+    display: block;
+  }
+  
+  .payment-instruction {
+    margin-top: 15px;
+    padding: 12px;
+    background: #e7f5ff;
+    border-left: 4px solid #1c7ed6;
+  }
