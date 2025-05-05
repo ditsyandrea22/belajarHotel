@@ -1,80 +1,75 @@
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Element references
-        const form = document.getElementById('reservation-form');
-        const checkIn = document.getElementById('check-in');
-        const checkOut = document.getElementById('check-out');
-        const roomType = document.getElementById('room-type');
-        const totalPrice = document.getElementById('total-price');
-        const priceDisplay = document.getElementById('price-display');
-        
-        // Harga kamar
-        const roomPrices = {
-            'superior': 500000,
-            'deluxe': 800000,
-            'suite': 1200000
-        };
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservasi Hotel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="reservation-header">
+        <h1>Form Reservasi Kamar</h1>
+    </header>
 
-        // Update harga saat kamar berubah
-        roomType.addEventListener('change', calculateTotal);
-        
-        // Hitung total saat tanggal berubah
-        checkIn.addEventListener('change', function() {
-            checkOut.min = this.value;
-            if(checkOut.value) calculateTotal();
-        });
-        
-        checkOut.addEventListener('change', calculateTotal);
+    <main class="reservation-container">
+        <form id="reservation-form">
+            <div class="form-group">
+                <label for="name">Nama Lengkap</label>
+                <input type="text" id="name" required>
+            </div>
 
-        // Fungsi hitung total
-        function calculateTotal() {
-            if(checkIn.value && checkOut.value && roomType.value) {
-                const diffTime = Math.abs(new Date(checkOut.value) - new Date(checkIn.value));
-                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-                
-                if(diffDays > 0) {
-                    const price = roomPrices[roomType.value] * diffDays;
-                    totalPrice.value = price;
-                    priceDisplay.textContent = `Rp ${price.toLocaleString('id-ID')} (${diffDays} malam)`;
-                } else {
-                    alert('Tanggal check-out harus setelah check-in');
-                    checkOut.value = '';
-                }
-            }
-        }
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+            </div>
 
-        // Form submission
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Simple validation
-            if(!form.checkValidity()) {
-                alert('Harap isi semua field yang wajib diisi!');
-                return;
-            }
+            <div class="form-group">
+                <label for="phone">Nomor Telepon</label>
+                <input type="tel" id="phone" required>
+            </div>
 
-            // Simpan ke localStorage
-            const reservation = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                checkIn: checkIn.value,
-                checkOut: checkOut.value,
-                roomType: roomType.options[roomType.selectedIndex].text,
-                totalPrice: totalPrice.value,
-                specialRequest: document.getElementById('requests').value
-            };
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="check-in">Check-in</label>
+                    <input type="date" id="check-in" required>
+                </div>
 
-            localStorage.setItem('lastReservation', JSON.stringify(reservation));
-            
-            // Tampilkan konfirmasi
-            alert(`Reservasi berhasil!\nAtas nama: ${reservation.name}\nTotal: Rp ${parseInt(reservation.totalPrice).toLocaleString('id-ID')}`);
-            form.reset();
-            priceDisplay.textContent = 'Rp 0';
-        });
+                <div class="form-group">
+                    <label for="check-out">Check-out</label>
+                    <input type="date" id="check-out" required>
+                </div>
+            </div>
 
-        // Load today's date as default check-in
-        const today = new Date().toISOString().split('T')[0];
-        checkIn.min = today;
-    });
-</script>
+            <div class="form-group">
+                <label for="room-type">Tipe Kamar</label>
+                <select id="room-type" required>
+                    <option value="">Pilih Kamar</option>
+                    <option value="superior">Superior - Rp 500.000/malam</option>
+                    <option value="deluxe">Deluxe - Rp 800.000/malam</option>
+                    <option value="suite">Suite - Rp 1.200.000/malam</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="guests">Jumlah Tamu</label>
+                <input type="number" id="guests" min="1" max="4" value="1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="requests">Permintaan Khusus</label>
+                <textarea id="requests" rows="3"></textarea>
+            </div>
+
+            <div class="price-summary">
+                <h3>Total Harga:</h3>
+                <div id="price-display">Rp 0</div>
+                <input type="hidden" id="total-price">
+            </div>
+
+            <button type="submit" class="btn">Pesan Sekarang</button>
+        </form>
+    </main>
+
+    <script src="reservasi.js"></script>
+</body>
+</html>
