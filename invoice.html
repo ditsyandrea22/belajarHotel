@@ -1,583 +1,280 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invoice System</title>
+    <title>Invoice Pembayaran</title>
     <style>
-        /* Reset dan Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
         body {
-            background-color: #f5f5f5;
-            color: #333;
+            font-family: Arial, sans-serif;
             line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            color: #333;
         }
-        
-        /* Header Styles */
-        header {
-            background-color: #2c3e50;
-            color: white;
-            padding: 1rem 0;
+        .invoice-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #eee;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .header {
             text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
         }
-        
-        .logo {
-            font-size: 2rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
+        .hotel-info {
+            margin-bottom: 20px;
         }
-        
-        /* Navigation */
-        nav {
-            background-color: #34495e;
-            padding: 0.5rem 0;
-        }
-        
-        nav ul {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            flex-wrap: wrap;
-        }
-        
-        nav ul li {
-            margin: 0.5rem 1rem;
-        }
-        
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-        
-        nav ul li a:hover {
-            background-color: #2c3e50;
-            transform: translateY(-2px);
-        }
-        
-        /* Main Content */
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-        
-        .invoice-section {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            transition: transform 0.3s ease;
-        }
-        
-        .invoice-section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-        }
-        
-        h1, h2, h3 {
-            color: #2c3e50;
-            margin-bottom: 1rem;
-        }
-        
-        /* Invoice Form */
-        .invoice-form {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-            position: relative;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: #2c3e50;
-        }
-        
-        .form-group input, 
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-        }
-        
-        .form-group input:focus, 
-        .form-group select:focus,
-        .form-group textarea:focus {
-            border-color: #3498db;
-            outline: none;
-            box-shadow: 0 0 0 2px rgba(52,152,219,0.2);
-        }
-        
-        .form-group.full-width {
-            grid-column: 1 / -1;
-        }
-        
-        /* Invoice Items Table */
-        .invoice-items {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1.5rem 0;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-        
-        .invoice-items th, 
-        .invoice-items td {
-            padding: 0.75rem;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        
-        .invoice-items th {
-            background-color: #f2f2f2;
-            font-weight: 600;
-            color: #2c3e50;
-        }
-        
-        .invoice-items tr:hover {
-            background-color: #f9f9f9;
-        }
-        
-        .invoice-items input {
-            width: 100%;
-            padding: 0.5rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            transition: all 0.3s;
-        }
-        
-        .invoice-items input:focus {
-            border-color: #3498db;
-            box-shadow: 0 0 0 2px rgba(52,152,219,0.2);
-        }
-        
-        /* Invoice Summary */
-        .invoice-summary {
-            background-color: #f9f9f9;
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-top: 1.5rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-        
-        .summary-row {
+        .invoice-info {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 0.75rem;
-            font-size: 1.1rem;
+            margin-bottom: 20px;
         }
-        
-        .summary-total {
-            font-size: 1.3rem;
+        .customer-info {
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .total {
+            text-align: right;
             font-weight: bold;
-            color: #2c3e50;
-            border-top: 2px solid #2c3e50;
-            padding-top: 0.75rem;
+            font-size: 1.2em;
         }
-        
-        /* Buttons */
-        .btn {
-            display: inline-block;
-            padding: 0.75rem 1.5rem;
-            background-color: #3498db;
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.9em;
+            color: #777;
+        }
+        .payment-methods {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+        .payment-methods h3 {
+            margin-top: 0;
+        }
+        .payment-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #4CAF50;
             color: white;
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        
-        .btn:hover {
-            background-color: #2980b9;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-        }
-        
-        .btn:active {
-            transform: translateY(0);
-            box-shadow: 0 2px 3px rgba(0,0,0,0.1);
-        }
-        
-        .btn-danger {
-            background-color: #e74c3c;
-        }
-        
-        .btn-danger:hover {
-            background-color: #c0392b;
-        }
-        
-        .btn-success {
-            background-color: #2ecc71;
-        }
-        
-        .btn-success:hover {
-            background-color: #27ae60;
-        }
-        
-        .btn-group {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-            flex-wrap: wrap;
-        }
-        
-        /* Footer */
-        footer {
-            background-color: #2c3e50;
-            color: white;
+            font-size: 16px;
             text-align: center;
-            padding: 1.5rem 0;
-            margin-top: 2rem;
         }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .invoice-form {
-                grid-template-columns: 1fr;
-            }
-            
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            nav ul li {
-                margin: 0.5rem 0;
-                width: 100%;
-                text-align: center;
-            }
-            
-            .btn-group {
-                flex-direction: column;
-            }
-            
-            .btn-group .btn {
-                width: 100%;
-            }
+        .payment-btn:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="logo">Invoice System</div>
-        <p>Kelola faktur dan pembayaran dengan mudah</p>
-    </header>
-    
-    <nav>
-        <ul>
-            <li><a href="#">Beranda</a></li>
-            <li><a href="#">Invoice</a></li>
-            <li><a href="#">Pelanggan</a></li>
-            <li><a href="#">Laporan</a></li>
-            <li><a href="#">Pengaturan</a></li>
-        </ul>
-    </nav>
-    
-    <div class="container">
-        <section class="invoice-section">
-            <h1>Buat Invoice Baru</h1>
-            
-            <form class="invoice-form" id="invoiceForm">
-                <div class="form-group">
-                    <label for="invoice-number">Nomor Invoice</label>
-                    <input type="text" id="invoice-number" value="INV-2023-001" readonly>
-                </div>
-                
-                <div class="form-group">
-                    <label for="invoice-date">Tanggal Invoice</label>
-                    <input type="date" id="invoice-date" value="">
-                </div>
-                
-                <div class="form-group">
-                    <label for="due-date">Jatuh Tempo</label>
-                    <input type="date" id="due-date" value="">
-                </div>
-                
-                <div class="form-group">
-                    <label for="status">Status</label>
-                    <select id="status">
-                        <option value="draft">Draft</option>
-                        <option value="sent">Terkirim</option>
-                        <option value="paid">Dibayar</option>
-                        <option value="cancelled">Dibatalkan</option>
-                    </select>
-                </div>
-                
-                <div class="form-group full-width">
-                    <label for="customer">Pelanggan</label>
-                    <select id="customer">
-                        <option value="">Pilih Pelanggan...</option>
-                        <option value="1">PT. Contoh Perusahaan</option>
-                        <option value="2">CV. Sampel Bisnis</option>
-                        <option value="3">Toko Indah Jaya</option>
-                        <option value="4">UD. Makmur Sejahtera</option>
-                        <option value="5">PT. Teknologi Maju</option>
-                    </select>
-                </div>
-                
-                <div class="form-group full-width">
-                    <h3>Item Invoice</h3>
-                    <table class="invoice-items" id="itemsTable">
-                        <thead>
-                            <tr>
-                                <th width="40%">Deskripsi</th>
-                                <th width="15%">Kuantitas</th>
-                                <th width="15%">Harga</th>
-                                <th width="15%">Pajak</th>
-                                <th width="15%">Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="item-row">
-                                <td><input type="text" class="item-desc" placeholder="Deskripsi item" required></td>
-                                <td><input type="number" class="item-qty" value="1" min="1" required></td>
-                                <td><input type="number" class="item-price" placeholder="Harga" min="0" step="1000" required></td>
-                                <td>
-                                    <select class="item-tax">
-                                        <option value="0">0%</option>
-                                        <option value="10">10%</option>
-                                        <option value="11">11%</option>
-                                    </select>
-                                </td>
-                                <td class="item-total">Rp 0</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <button type="button" class="btn" id="addItemBtn">+ Tambah Item</button>
-                </div>
-                
-                <div class="form-group full-width">
-                    <div class="invoice-summary" id="invoiceSummary">
-                        <h3>Ringkasan Invoice</h3>
-                        <div class="summary-row">
-                            <span>Subtotal:</span>
-                            <span id="subtotal">Rp 0</span>
-                        </div>
-                        <div class="summary-row">
-                            <span>Pajak:</span>
-                            <span id="tax">Rp 0</span>
-                        </div>
-                        <div class="summary-row">
-                            <span>Diskon:</span>
-                            <input type="number" id="discount" min="0" value="0" style="width: 100px; display: inline-block;">
-                            <span id="discountValue">Rp 0</span>
-                        </div>
-                        <div class="summary-row summary-total">
-                            <span>Total:</span>
-                            <span id="grandTotal">Rp 0</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="form-group full-width">
-                    <label for="notes">Catatan</label>
-                    <textarea id="notes" rows="3" placeholder="Tambahkan catatan untuk invoice ini..."></textarea>
-                </div>
-                
-                <div class="form-group full-width btn-group">
-                    <button type="button" class="btn btn-danger" id="cancelBtn">Batal</button>
-                    <button type="button" class="btn" id="saveDraftBtn">Simpan Draft</button>
-                    <button type="submit" class="btn btn-success">Kirim Invoice</button>
-                </div>
-            </form>
-        </section>
+    <div class="invoice-container">
+        <div class="header">
+            <h1>INVOICE PEMBAYARAN</h1>
+            <h2>HOTEL MEWAH</h2>
+        </div>
+
+        <div class="hotel-info">
+            <p>Jl. Contoh No. 123, Kota Bandung</p>
+            <p>Telepon: (022) 1234567 | Email: info@hotelmewah.com</p>
+        </div>
+
+        <div class="invoice-info">
+            <div>
+                <p><strong>No. Invoice:</strong> <span id="invoice-number">INV-0001</span></p>
+                <p><strong>Tanggal:</strong> <span id="invoice-date"></span></p>
+                <p><strong>Check-in:</strong> <span id="check-in-date"></span></p>
+                <p><strong>Check-out:</strong> <span id="check-out-date"></span></p>
+            </div>
+            <div>
+                <p><strong>Tipe Kamar:</strong> <span id="room-type"></span></p>
+                <p><strong>Durasi Menginap:</strong> <span id="duration"></span> malam</p>
+                <p><strong>Status:</strong> <span id="payment-status">Belum Dibayar</span></p>
+            </div>
+        </div>
+
+        <div class="customer-info">
+            <h3>Data Tamu</h3>
+            <p><strong>Nama:</strong> <span id="customer-name"></span></p>
+            <p><strong>Email:</strong> <span id="customer-email"></span></p>
+            <p><strong>No. Telepon:</strong> <span id="customer-phone"></span></p>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Deskripsi</th>
+                    <th>Jumlah</th>
+                    <th>Harga Satuan</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="room-desc">Kamar Standar (1 malam)</td>
+                    <td id="room-qty">1</td>
+                    <td id="room-price">Rp 500.000</td>
+                    <td id="room-total">Rp 500.000</td>
+                </tr>
+                <tr>
+                    <td>Pajak (10%)</td>
+                    <td>1</td>
+                    <td id="tax-amount">Rp 50.000</td>
+                    <td id="tax-total">Rp 50.000</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="total">
+            <p>Total Pembayaran: <span id="total-payment">Rp 550.000</span></p>
+        </div>
+
+        <div class="payment-methods">
+            <h3>Metode Pembayaran</h3>
+            <button class="payment-btn" onclick="payWithBankTransfer()">Transfer Bank</button>
+            <button class="payment-btn" onclick="payWithCreditCard()">Kartu Kredit</button>
+            <button class="payment-btn" onclick="payWithEWallet()">E-Wallet</button>
+        </div>
+
+        <div class="footer">
+            <p>Terima kasih atas pemesanan Anda. Silahkan melakukan pembayaran sebelum <span id="due-date"></span></p>
+            <p>Untuk konfirmasi pembayaran, silahkan hubungi kami melalui telepon atau email.</p>
+        </div>
     </div>
-    
-    <footer>
-        <p>&copy; <span id="currentYear"></span> Invoice System. All rights reserved.</p>
-    </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Set tanggal otomatis
-            const today = new Date().toISOString().split('T')[0];
-            document.getElementById('invoice-date').value = today;
-            
-            // Set jatuh tempo 7 hari dari sekarang
-            const dueDate = new Date();
-            dueDate.setDate(dueDate.getDate() + 7);
-            document.getElementById('due-date').value = dueDate.toISOString().split('T')[0];
-            
-            // Set tahun footer
-            document.getElementById('currentYear').textContent = new Date().getFullYear();
-            
-            // Tambahkan item baru
-            document.getElementById('addItemBtn').addEventListener('click', addNewItem);
-            
-            // Hitung total ketika ada perubahan
-            document.querySelectorAll('.item-qty, .item-price, .item-tax').forEach(element => {
-                element.addEventListener('change', calculateTotals);
-            });
-            
-            document.getElementById('discount').addEventListener('input', calculateTotals);
-            
-            // Fungsi tambah item baru
-            function addNewItem() {
-                const tbody = document.querySelector('#itemsTable tbody');
-                const newRow = document.querySelector('.item-row').cloneNode(true);
-                
-                // Clear nilai input
-                newRow.querySelector('.item-desc').value = '';
-                newRow.querySelector('.item-qty').value = 1;
-                newRow.querySelector('.item-price').value = '';
-                newRow.querySelector('.item-tax').value = '0';
-                newRow.querySelector('.item-total').textContent = 'Rp 0';
-                
-                // Tambahkan tombol hapus
-                const deleteCell = document.createElement('td');
-                const deleteBtn = document.createElement('button');
-                deleteBtn.textContent = 'Hapus';
-                deleteBtn.className = 'btn btn-danger';
-                deleteBtn.style.padding = '0.3rem 0.5rem';
-                deleteBtn.style.fontSize = '0.8rem';
-                deleteBtn.addEventListener('click', function() {
-                    this.closest('tr').remove();
-                    calculateTotals();
-                });
-                deleteCell.appendChild(deleteBtn);
-                newRow.appendChild(deleteCell);
-                
-                tbody.appendChild(newRow);
-                
-                // Tambahkan event listener untuk input baru
-                newRow.querySelectorAll('.item-qty, .item-price, .item-tax').forEach(element => {
-                    element.addEventListener('change', calculateTotals);
-                });
-            }
-            
-            // Fungsi hitung total
-            function calculateTotals() {
-                let subtotal = 0;
-                let totalTax = 0;
-                
-                document.querySelectorAll('.item-row').forEach(row => {
-                    const qty = parseFloat(row.querySelector('.item-qty').value) || 0;
-                    const price = parseFloat(row.querySelector('.item-price').value) || 0;
-                    const taxRate = parseFloat(row.querySelector('.item-tax').value) || 0;
-                    
-                    const total = qty * price;
-                    const tax = total * (taxRate / 100);
-                    
-                    row.querySelector('.item-total').textContent = formatCurrency(total + tax);
-                    
-                    subtotal += total;
-                    totalTax += tax;
-                });
-                
-                const discount = parseFloat(document.getElementById('discount').value) || 0;
-                const discountValue = Math.min(discount, subtotal);
-                
-                const grandTotal = subtotal + totalTax - discountValue;
-                
-                document.getElementById('subtotal').textContent = formatCurrency(subtotal);
-                document.getElementById('tax').textContent = formatCurrency(totalTax);
-                document.getElementById('discountValue').textContent = formatCurrency(discountValue);
-                document.getElementById('grandTotal').textContent = formatCurrency(grandTotal);
-            }
-            
-            // Format mata uang
-            function formatCurrency(amount) {
-                return 'Rp ' + amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
-            }
-            
-            // Event listener untuk tombol batal
-            document.getElementById('cancelBtn').addEventListener('click', function() {
-                if (confirm('Apakah Anda yakin ingin membatalkan invoice ini?')) {
-                    document.getElementById('invoiceForm').reset();
-                    // Reset tanggal
-                    document.getElementById('invoice-date').value = today;
-                    document.getElementById('due-date').value = dueDate.toISOString().split('T')[0];
-                    // Reset items
-                    const tbody = document.querySelector('#itemsTable tbody');
-                    while (tbody.children.length > 1) {
-                        tbody.removeChild(tbody.lastChild);
-                    }
-                    // Reset item pertama
-                    const firstRow = tbody.querySelector('.item-row');
-                    firstRow.querySelector('.item-desc').value = '';
-                    firstRow.querySelector('.item-qty').value = 1;
-                    firstRow.querySelector('.item-price').value = '';
-                    firstRow.querySelector('.item-tax').value = '0';
-                    firstRow.querySelector('.item-total').textContent = 'Rp 0';
-                    // Reset summary
-                    calculateTotals();
-                }
-            });
-            
-            // Event listener untuk simpan draft
-            document.getElementById('saveDraftBtn').addEventListener('click', function() {
-                if (validateForm()) {
-                    alert('Invoice berhasil disimpan sebagai draft');
-                    // Di sini bisa ditambahkan kode untuk menyimpan ke database/localStorage
-                }
-            });
-            
-            // Event listener untuk submit form
-            document.getElementById('invoiceForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                if (validateForm()) {
-                    alert('Invoice berhasil dikirim');
-                    // Di sini bisa ditambahkan kode untuk mengirim data
-                }
-            });
-            
-            // Validasi form
-            function validateForm() {
-                let isValid = true;
-                
-                // Validasi item
-                document.querySelectorAll('.item-row').forEach((row, index) => {
-                    const desc = row.querySelector('.item-desc').value.trim();
-                    const price = row.querySelector('.item-price').value;
-                    
-                    if (!desc) {
-                        alert(`Deskripsi item ${index + 1} tidak boleh kosong`);
-                        isValid = false;
-                        return;
-                    }
-                    
-                    if (!price || parseFloat(price) <= 0) {
-                        alert(`Harga item ${index + 1} tidak valid`);
-                        isValid = false;
-                        return;
-                    }
-                });
-                
-                // Validasi pelanggan
-                if (!document.getElementById('customer').value) {
-                    alert('Silakan pilih pelanggan');
-                    isValid = false;
-                }
-                
-                return isValid;
-            }
-            
-            // Hitung total pertama kali
-            calculateTotals();
-        });
+        // Fungsi untuk generate nomor invoice acak
+        function generateInvoiceNumber() {
+            const prefix = 'INV';
+            const date = new Date();
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            const randomNum = Math.floor(1000 + Math.random() * 9000);
+            return `${prefix}-${year}${month}${day}-${randomNum}`;
+        }
+
+        // Ambil parameter dari URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const roomType = urlParams.get('roomType') || 'standar';
+        const duration = urlParams.get('duration') || '1';
+        const name = urlParams.get('name') || 'Tamu';
+        const email = urlParams.get('email') || '-';
+        const phone = urlParams.get('phone') || '-';
+        const checkIn = urlParams.get('checkIn') || new Date().toISOString().split('T')[0];
+
+        // Tentukan harga berdasarkan tipe kamar
+        let roomPrice, roomDesc;
+        switch(roomType.toLowerCase()) {
+            case 'standar':
+                roomPrice = 500000;
+                roomDesc = 'Kamar Standar';
+                break;
+            case 'deluxe':
+                roomPrice = 800000;
+                roomDesc = 'Kamar Deluxe';
+                break;
+            case 'suite':
+                roomPrice = 1200000;
+                roomDesc = 'Kamar Suite';
+                break;
+            default:
+                roomPrice = 500000;
+                roomDesc = 'Kamar Standar';
+        }
+
+        // Hitung total
+        const totalRoom = roomPrice * parseInt(duration);
+        const tax = totalRoom * 0.1;
+        const totalPayment = totalRoom + tax;
+
+        // Format tanggal
+        const today = new Date();
+        const dueDate = new Date();
+        dueDate.setDate(today.getDate() + 1);
+        
+        // Hitung tanggal check-out
+        const checkInDate = new Date(checkIn);
+        const checkOutDate = new Date(checkInDate);
+        checkOutDate.setDate(checkInDate.getDate() + parseInt(duration));
+
+        // Isi data ke invoice
+        document.getElementById('invoice-number').textContent = generateInvoiceNumber();
+        document.getElementById('invoice-date').textContent = today.toLocaleDateString('id-ID');
+        document.getElementById('check-in-date').textContent = checkInDate.toLocaleDateString('id-ID');
+        document.getElementById('check-out-date').textContent = checkOutDate.toLocaleDateString('id-ID');
+        
+        document.getElementById('room-type').textContent = roomDesc;
+        document.getElementById('duration').textContent = duration;
+        document.getElementById('customer-name').textContent = decodeURIComponent(name);
+        document.getElementById('customer-email').textContent = decodeURIComponent(email);
+        document.getElementById('customer-phone').textContent = decodeURIComponent(phone);
+        
+        document.getElementById('room-desc').textContent = `${roomDesc} (${duration} malam)`;
+        document.getElementById('room-qty').textContent = duration;
+        document.getElementById('room-price').textContent = `Rp ${roomPrice.toLocaleString('id-ID')}`;
+        document.getElementById('room-total').textContent = `Rp ${totalRoom.toLocaleString('id-ID')}`;
+        
+        document.getElementById('tax-amount').textContent = `Rp ${tax.toLocaleString('id-ID')}`;
+        document.getElementById('tax-total').textContent = `Rp ${tax.toLocaleString('id-ID')}`;
+        
+        document.getElementById('total-payment').textContent = `Rp ${totalPayment.toLocaleString('id-ID')}`;
+        document.getElementById('due-date').textContent = dueDate.toLocaleDateString('id-ID');
+
+        // Fungsi pembayaran
+        function payWithBankTransfer() {
+            document.getElementById('payment-status').textContent = 'Menunggu Pembayaran (Transfer Bank)';
+            document.getElementById('payment-status').style.color = 'orange';
+            alert('Silahkan transfer ke rekening BCA 1234567890 a.n Hotel Mewah');
+        }
+
+        function payWithCreditCard() {
+            document.getElementById('payment-status').textContent = 'Menunggu Verifikasi (Kartu Kredit)';
+            document.getElementById('payment-status').style.color = 'orange';
+            alert('Anda akan dialihkan ke halaman pembayaran kartu kredit');
+        }
+
+        function payWithEWallet() {
+            document.getElementById('payment-status').textContent = 'Menunggu Pembayaran (E-Wallet)';
+            document.getElementById('payment-status').style.color = 'orange';
+            alert('Pilih e-wallet: OVO, GoPay, atau Dana');
+        }
+
+        // Simpan data ke localStorage (opsional)
+        function saveBookingData() {
+            const bookingData = {
+                invoiceNumber: document.getElementById('invoice-number').textContent,
+                roomType: roomDesc,
+                duration: duration,
+                totalPayment: totalPayment,
+                customerName: name,
+                checkIn: checkInDate.toISOString().split('T')[0],
+                checkOut: checkOutDate.toISOString().split('T')[0],
+                bookingDate: today.toISOString().split('T')[0]
+            };
+            localStorage.setItem('lastBooking', JSON.stringify(bookingData));
+        }
+
+        // Panggil fungsi simpan data
+        saveBookingData();
     </script>
 </body>
 </html>
