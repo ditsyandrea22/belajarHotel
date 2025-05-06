@@ -438,7 +438,526 @@ Open in GitHub Pages
 </body>
 </html>
 ```
+## Berikut adalah file style.css sederhana
+   ```
+   /* Reset dan Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
+body {
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Header Styles */
+header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 1.5rem 0;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    font-size: 2.2rem;
+}
+
+/* Navigation Styles */
+nav {
+    background-color: #34495e;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+nav ul li {
+    margin: 0 1.5rem;
+}
+
+nav ul li a {
+    color: white;
+    font-weight: 500;
+    padding: 0.5rem 0;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+nav ul li a:hover {
+    color: #f1c40f;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #f1c40f;
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+/* Main Content Styles */
+main {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: calc(100vh - 300px);
+}
+
+.page-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #2c3e50;
+    font-size: 2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.page-title::after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 3px;
+    background: #f1c40f;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Hero Section */
+.hero {
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1551882547-ff40c63fe5fa');
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin-bottom: 3rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.hero h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Room Container Styles */
+.room-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.room-card {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.room-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.room-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-bottom: 4px solid #f1c40f;
+}
+
+.room-info {
+    padding: 1.5rem;
+}
+
+.room-info h3 {
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+    font-size: 1.3rem;
+}
+
+.price {
+    font-weight: bold;
+    color: #e74c3c;
+    margin: 0.8rem 0;
+    font-size: 1.2rem;
+}
+
+.facilities {
+    margin: 1rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.facilities span {
+    display: inline-block;
+    background-color: #ecf0f1;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: #2c3e50;
+}
+
+/* Button Styles */
+.book-btn {
+    display: inline-block;
+    background-color: #2c3e50;
+    color: white;
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    margin-top: 1rem;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    width: 100%;
+}
+
+.book-btn:hover {
+    background-color: #f1c40f;
+    color: #2c3e50;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
+    margin-top: 3rem;
+}
+
+footer p {
+    margin-bottom: 0.5rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    nav ul li {
+        margin: 0 0.8rem;
+    }
+    
+    .hero {
+        height: 300px;
+    }
+    
+    .hero h2 {
+        font-size: 2rem;
+    }
+    
+    .room-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    nav ul li {
+        margin: 0.3rem 0;
+    }
+    
+    .hero h2 {
+        font-size: 1.8rem;
+    }
+}
+```
+## Cara Menggunakan:
+Buat file baru bernama style.css
+
+Salin seluruh kode di atas ke dalam file tersebut
+
+Hubungkan ke HTML Anda dengan menambahkan ini di bagian <head>:
+```
+    <link rel="stylesheet" href="style.css">
+```
+## Berikut adalah dua file JavaScript sederhana 
+   main.js
+   ```
+   // Fungsi untuk inisialisasi aplikasi
+document.addEventListener('DOMContentLoaded', function() {
+    // Set tahun copyright otomatis
+    setCopyrightYear();
+    
+    // Inisialisasi slider kamar
+    initRoomSlider();
+    
+    // Setup event listener untuk form kontak
+    setupContactForm();
+    
+    // Tambahkan efek scroll smooth untuk navigasi
+    setupSmoothScrolling();
+});
+
+// Fungsi untuk mengupdate tahun copyright di footer
+function setCopyrightYear() {
+    const yearElement = document.getElementById('copyright-year');
+    if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
+    }
+}
+
+// Fungsi untuk inisialisasi slider kamar (jika ada)
+function initRoomSlider() {
+    const roomSlider = document.querySelector('.room-slider');
+    if (roomSlider) {
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.room-slide');
+        const totalSlides = slides.length;
+        
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.style.display = i === index ? 'block' : 'none';
+            });
+        }
+        
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            showSlide(currentSlide);
+        }
+        
+        // Tampilkan slide pertama
+        showSlide(currentSlide);
+        
+        // Otomatis ganti slide setiap 5 detik
+        setInterval(nextSlide, 5000);
+    }
+}
+
+// Fungsi untuk setup form kontak
+function setupContactForm() {
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Ambil data form
+            const formData = new FormData(contactForm);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const message = formData.get('message');
+            
+            // Validasi sederhana
+            if (!name || !email || !message) {
+                alert('Harap isi semua field!');
+                return;
+            }
+            
+            // Simulasi pengiriman data
+            console.log('Form submitted:', { name, email, message });
+            alert('Terima kasih atas pesan Anda! Kami akan segera menghubungi Anda.');
+            contactForm.reset();
+        });
+    }
+}
+
+// Fungsi untuk smooth scrolling
+function setupSmoothScrolling() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+}
+
+// Fungsi untuk toggle menu mobile (jika ada)
+function toggleMobileMenu() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenu) {
+        mobileMenu.classList.toggle('active');
+    }
+}
+```
+  script.js
+  ```
+  // Fungsi untuk menangani pemesanan kamar
+function handleRoomBooking() {
+    const bookButtons = document.querySelectorAll('.book-btn');
+    
+    bookButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const roomCard = this.closest('.room-card');
+            const roomName = roomCard.querySelector('h3').textContent;
+            const roomPrice = roomCard.querySelector('.price').textContent;
+            
+            // Simpan data kamar yang dipilih di localStorage
+            localStorage.setItem('selectedRoom', JSON.stringify({
+                name: roomName,
+                price: roomPrice
+            }));
+            
+            // Redirect ke halaman pemesanan
+            window.location.href = 'booking.html';
+        });
+    });
+}
+
+// Fungsi untuk menampilkan modal
+function showModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+// Fungsi untuk menyembunyikan modal
+function hideModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+}
+
+// Fungsi untuk inisialisasi gallery kamar (jika ada)
+function initRoomGallery() {
+    const galleryImages = document.querySelectorAll('.gallery-thumbnail');
+    const mainImage = document.querySelector('.gallery-main-img');
+    
+    if (galleryImages && mainImage) {
+        galleryImages.forEach(img => {
+            img.addEventListener('click', function() {
+                // Update gambar utama
+                mainImage.src = this.src;
+                mainImage.alt = this.alt;
+                
+                // Update active class
+                galleryImages.forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    }
+}
+
+// Fungsi untuk menangani filter kamar
+function setupRoomFilters() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const roomCards = document.querySelectorAll('.room-card');
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const filterValue = this.dataset.filter;
+            
+            // Update active button
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Filter kamar
+            roomCards.forEach(card => {
+                if (filterValue === 'all' || card.dataset.type === filterValue) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
+}
+
+// Fungsi untuk menampilkan notifikasi
+function showNotification(message, type = 'success') {
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+    notification.textContent = message;
+    
+    document.body.appendChild(notification);
+    
+    // Hilangkan notifikasi setelah 3 detik
+    setTimeout(() => {
+        notification.classList.add('fade-out');
+        setTimeout(() => {
+            notification.remove();
+        }, 300);
+    }, 3000);
+}
+
+// Panggil fungsi yang diperlukan saat DOM siap
+document.addEventListener('DOMContentLoaded', function() {
+    handleRoomBooking();
+    initRoomGallery();
+    setupRoomFilters();
+    
+    // Setup event listener untuk tombol close modal
+    document.querySelectorAll('.modal-close').forEach(button => {
+        button.addEventListener('click', function() {
+            const modalId = this.closest('.modal').id;
+            hideModal(modalId);
+        });
+    });
+    
+    // Close modal ketika klik di luar konten modal
+    document.querySelectorAll('.modal').forEach(modal => {
+        modal.addEventListener('click', function(e) {
+            if (e.target === this) {
+                hideModal(this.id);
+            }
+        });
+    });
+});
+```
+## Cara Menggunakan:
+Buat dua file baru: main.js dan script.js
+
+Salin kode di atas ke masing-masing file
+
+Hubungkan ke HTML Anda dengan menambahkan ini sebelum tag </body>:
+   ```
+   <script src="js/main.js"></script>
+   <script src="js/script.js"></script>
+```
 ## Teknologi
 
 - PHP
