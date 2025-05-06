@@ -201,7 +201,7 @@ Open in GitHub Pages
 </body>
 </html>
 ```
-## Berikut adalah file kamar.html sederhana
+## Berikut adalah file kamar.html 
    ```
    <!DOCTYPE html>
 <html lang="id">
@@ -438,7 +438,107 @@ Open in GitHub Pages
 </body>
 </html>
 ```
-## Berikut adalah file style.css sederhana
+## Berikut adalah contoh sederhana file fasilitas.html
+```
+   <!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fasilitas Hotel</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        
+        header {
+            background: #003366;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px 0;
+        }
+        
+        .facility {
+            background: #fff;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .facility img {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        
+        footer {
+            background: #003366;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 20px;
+        }
+        
+        @media(max-width: 768px) {
+            .container {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Fasilitas Hotel Kami</h1>
+    </header>
+    
+    <div class="container">
+        <div class="facility">
+            <h2>Kolam Renang</h2>
+            <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Kolam Renang">
+            <p>Nikmati kolam renang outdoor kami dengan pemandangan yang menakjubkan. Dilengkapi dengan area bersantai dan bar kolam renang.</p>
+        </div>
+        
+        <div class="facility">
+            <h2>Spa & Wellness</h2>
+            <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Spa">
+            <p>Pusat spa kami menawarkan berbagai perawatan relaksasi dan kecantikan dengan terapis profesional.</p>
+        </div>
+        
+        <div class="facility">
+            <h2>Restoran</h2>
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Restoran">
+            <p>Restoran kami menyajikan hidangan internasional dan lokal dengan bahan-bahan segar pilihan.</p>
+        </div>
+        
+        <div class="facility">
+            <h2>Ruang Pertemuan</h2>
+            <img src="https://images.unsplash.com/photo-1579389083078-4e7018379f7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Ruang Pertemuan">
+            <p>Fasilitas ruang pertemuan yang lengkap untuk acara bisnis atau pernikahan Anda.</p>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Hotel Contoh &copy; 2023 - Semua Hak Dilindungi</p>
+    </footer>
+</body>
+</html>
+```
+
+## Berikut adalah file style.css
    ```
    /* Reset dan Base Styles */
 * {
@@ -711,8 +811,7 @@ Hubungkan ke HTML Anda dengan menambahkan ini di bagian <head>:
 ```
     <link rel="stylesheet" href="style.css">
 ```
-## Berikut adalah dua file JavaScript sederhana 
-   main.js
+## Berikut adalah dua file JavaScript
    ```
    // Fungsi untuk inisialisasi aplikasi
 document.addEventListener('DOMContentLoaded', function() {
@@ -818,7 +917,7 @@ function toggleMobileMenu() {
     }
 }
 ```
-  script.js
+## script.js
   ```
   // Fungsi untuk menangani pemesanan kamar
 function handleRoomBooking() {
