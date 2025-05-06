@@ -956,7 +956,7 @@ footer p {
 }
 ```
 ## Cara Menggunakan:
-Buat file baru bernama style.css
+Buat file baru bernama css letakkan style.css di dalam css
 
 Salin seluruh kode di atas ke dalam file tersebut
 
