@@ -282,16 +282,6 @@ Buat Pull Request
 📜 Lisensi
 Dilisensikan di bawah MIT License.
 
-```
-Perbaikan yang dilakukan:
-1. Format judul dan subjudul diperbaiki
-2. Penulisan fitur lebih konsisten
-3. Menambahkan bagian teknologi yang digunakan
-4. Instruksi instalasi lebih jelas
-5. Menambahkan bagian kontribusi dan lisensi
-6. Beberapa typo diperbaiki (contoh: "liat" menjadi "lihat", "tamu" yang salah ketik)
-
-```
 
 📸 Screenshot
 <div align="center"> <img src="assets/img/screenshot-desktop.png" width="45%" alt="Desktop View"> <img src="assets/img/screenshot-mobile.png" width="45%" alt="Mobile View"> </div>
