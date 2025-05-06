@@ -2,23 +2,6 @@
 
 Repositori ini berisi proyek pembelajaran untuk sistem manajemen hotel sederhana.
 
-## Fitur
-
-- Manajemen Kamar
-  - Tambah kamar
-  - Lihat daftar kamar
-  - Update status kamar
-  - Hapus kamar
-
-- Manajemen Tamu
-  - Check-in tamu
-  - Check-out tamu
-  - Lihat daftar tamu
-
-- Laporan
-  - Laporan pendapatan
-  - Laporan okupansi kamar
-
 ## Instalasi
 
 🚀 Cara Menggunakan
@@ -686,6 +669,252 @@ Open in GitHub Pages
     
     <footer>
         <p>Hotel Contoh &copy; 2023 - Semua Hak Dilindungi</p>
+    </footer>
+</body>
+</html>
+```
+## Berikut adalah contoh file reservasi.html
+```
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservasi Hotel</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 2rem;
+        }
+        
+        .reservation-form {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+        }
+        
+        .room-types {
+            margin-top: 30px;
+        }
+        
+        .room-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            gap: 20px;
+        }
+        
+        .room-image {
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+        
+        .room-info {
+            flex: 1;
+        }
+        
+        .room-price {
+            font-size: 1.2rem;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .room-card {
+                flex-direction: column;
+            }
+            
+            .room-image {
+                width: 100%;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Reservasi Kamar Hotel</h1>
+        </div>
+    </header>
+    
+    <div class="container">
+        <form class="reservation-form">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="nama">Nama Lengkap</label>
+                    <input type="text" id="nama" name="nama" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="telepon">Nomor Telepon</label>
+                    <input type="tel" id="telepon" name="telepon" required>
+                </div>
+                <div class="form-group">
+                    <label for="jumlah-tamu">Jumlah Tamu</label>
+                    <input type="number" id="jumlah-tamu" name="jumlah-tamu" min="1" max="6" required>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="check-in">Tanggal Check-in</label>
+                    <input type="date" id="check-in" name="check-in" required>
+                </div>
+                <div class="form-group">
+                    <label for="check-out">Tanggal Check-out</label>
+                    <input type="date" id="check-out" name="check-out" required>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="tipe-kamar">Tipe Kamar</label>
+                <select id="tipe-kamar" name="tipe-kamar" required>
+                    <option value="">-- Pilih Tipe Kamar --</option>
+                    <option value="standard">Standard Room</option>
+                    <option value="deluxe">Deluxe Room</option>
+                    <option value="suite">Suite Room</option>
+                    <option value="family">Family Room</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="catatan">Catatan Tambahan</label>
+                <textarea id="catatan" name="catatan" rows="4"></textarea>
+            </div>
+            
+            <button type="submit">Pesan Sekarang</button>
+        </form>
+        
+        <div class="room-types">
+            <h2>Pilihan Kamar Kami</h2>
+            
+            <div class="room-card">
+                <img src="https://images.unsplash.com/photo-1566669437685-b9e79526acd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Standard Room" class="room-image">
+                <div class="room-info">
+                    <h3>Standard Room</h3>
+                    <p>Kamar nyaman dengan tempat tidur double atau twin, AC, TV, dan kamar mandi pribadi.</p>
+                    <p class="room-price">Rp 500.000/malam</p>
+                </div>
+            </div>
+            
+            <div class="room-card">
+                <img src="https://images.unsplash.com/photo-1596178065887-1198b6148b2b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Deluxe Room" class="room-image">
+                <div class="room-info">
+                    <h3>Deluxe Room</h3>
+                    <p>Kamar lebih luas dengan fasilitas tambahan seperti minibar dan pemandangan kota.</p>
+                    <p class="room-price">Rp 750.000/malam</p>
+                </div>
+            </div>
+            
+            <div class="room-card">
+                <img src="https://images.unsplash.com/photo-1582719471385-cf34a5b1d16e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Suite Room" class="room-image">
+                <div class="room-info">
+                    <h3>Suite Room</h3>
+                    <p>Kamar mewah dengan ruang tamu terpisah, fasilitas lengkap, dan pemandangan terbaik.</p>
+                    <p class="room-price">Rp 1.200.000/malam</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Hotel Contoh. Semua hak dilindungi.</p>
+        </div>
     </footer>
 </body>
 </html>
